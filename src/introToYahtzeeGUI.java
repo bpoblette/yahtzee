@@ -18,10 +18,10 @@ import java.util.Random;
 class introToYahtzeeGUI implements ActionListener
 {
     JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide, menuItem3K, menuItem4K, menuItemFH,
-    menuItemSS, menuItemLS,menuItemYL, menuItemC, menuItem1, menuItem2, menuItem3,menuItem4, menuItem5,
-    menuItem6, menuItem7, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button;
+    menuItemSS, menuItemLS,menuItemYL, menuItemC, menuItem1, menuItem2, menuItem3,menuItem4, menuItem5, 
+    dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
     JLabel topLabel, midLabel, label3, label4, label5, label6, diceImage1, diceImage2, 
-        diceImage3, diceImage4, diceImage5, diceImage6, diceImage7, displayScore; 
+        diceImage3, diceImage4, diceImage5, displayScore; 
 
     JPanel topPanel, midPanel, lowPanel;
 
@@ -40,6 +40,7 @@ class introToYahtzeeGUI implements ActionListener
     int dice = 5;
     int sides = 6;
     int player = 1;
+    int curenetPlayer = 1;
     int[] hand = new int[5];  
     int totalScore = 0;
 
@@ -154,19 +155,7 @@ class introToYahtzeeGUI implements ActionListener
         menuItem5.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         menuItem5.setBounds(300,325,200,50);
         menuItem5.addActionListener(this);
-        
-        menuItem6 = new JButton();
-        menuItem6.setText("");
-        menuItem6.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-        menuItem6.addActionListener(this);
-        menuItem6.setBounds(300,375,200,50);
-        
-        menuItem7 = new JButton(); 
-        menuItem7.setText("");
-        menuItem7.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-        menuItem7.setBounds(300,425,200,50);
-        menuItem7.addActionListener(this);
-
+   
 
 
         topPanel.add(menuItem3K);
@@ -181,8 +170,7 @@ class introToYahtzeeGUI implements ActionListener
         topPanel.add(menuItem3);
         topPanel.add(menuItem4);
         topPanel.add(menuItem5);
-        topPanel.add(menuItem6);    
-        topPanel.add(menuItem7);   
+
 
 
 
@@ -198,8 +186,7 @@ class introToYahtzeeGUI implements ActionListener
         menuItem3.setVisible(false);
         menuItem4.setVisible(false);
         menuItem5.setVisible(false);
-        menuItem6.setVisible(false);
-        menuItem7.setVisible(false);
+
 
         
 
@@ -332,6 +319,15 @@ class introToYahtzeeGUI implements ActionListener
         scoreHide.setOpaque(true);
 
 
+        // creating next player button
+        nextPlayerUp = new JButton();//creating instance of JButton  
+        nextPlayerUp.setText("Next Player");
+        nextPlayerUp.setPreferredSize(new Dimension(200,50));
+        nextPlayerUp.addActionListener(this);
+        nextPlayerUp.setBackground(Color.lightGray);
+        nextPlayerUp.setOpaque(true);
+
+
 
 
         topPanel.add(topLabel);
@@ -419,15 +415,17 @@ class introToYahtzeeGUI implements ActionListener
 
             next.setVisible(false);
             nextPlayer.setVisible(true);
+            nextPlayerUp.setVisible(true);
             midPanel.add(nextPlayer);
             midPanel.add(rollDice);
             midPanel.add(scoreShow);
+            midPanel.add(nextPlayerUp);
 
             label3.setText("");
 
             topLabel.setText("");
 
-            topLabel.setText("Player " + player);
+            topLabel.setText("Player " + curenetPlayer);
             topLabel.setFont(null);
             topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 
@@ -445,6 +443,19 @@ class introToYahtzeeGUI implements ActionListener
             rerollSelected();
 
             unhighlight();
+        }
+
+        if (e.getSource() == nextPlayerUp)
+        {
+            // player = (player + 1) % player
+
+            
+
+            // topLabel.setText("idk");
+
+            curenetPlayer = ((curenetPlayer) % player) + 1;
+
+            topLabel.setText("Player: " + curenetPlayer);
         }
 
 
@@ -468,7 +479,7 @@ class introToYahtzeeGUI implements ActionListener
             int score = 0;
 
 
-            topLabel.setText("Player " + player + " Scorecard");
+            topLabel.setText("Player " + curenetPlayer + " Scorecard");
             label3.setText("Total Score: " + totalScore);
             label3.setBounds(10,0,250,100);
 

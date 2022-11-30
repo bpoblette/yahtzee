@@ -381,8 +381,6 @@ class introToYahtzeeGUI implements ActionListener
             label3.setText("Players: ");
             label3.setBounds(150,100,120,100);
 
-            label4.setText("Sides: ");
-            label4.setBounds(300,100,150,100);
 
 
 
@@ -391,9 +389,9 @@ class introToYahtzeeGUI implements ActionListener
             drpDwnDice.setVisible(true);
             topPanel.add(drpDwnDice);
 
-            drpDwnSides.setBounds(300,150,100,100);
+            // drpDwnSides.setBounds(300,150,100,100);
 
-            topPanel.add(drpDwnSides);
+            // topPanel.add(drpDwnSides);
             
 
             startBut.setVisible(false);
@@ -407,7 +405,7 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == next)
         {
             drpDwnDice.setVisible(false);
-            drpDwnSides.setVisible(false);
+            // drpDwnSides.setVisible(false);
             next.setVisible(false);
 
 
@@ -427,7 +425,7 @@ class introToYahtzeeGUI implements ActionListener
             midPanel.add(scoreShow);
 
             label3.setText("");
-            label4.setText("");
+
             topLabel.setText("");
 
             topLabel.setText("Player " + player);

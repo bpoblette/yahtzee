@@ -40,7 +40,7 @@ class introToYahtzeeGUI implements ActionListener
     int dice = 5;
     int sides = 6;
     int player = 1;
-    int[] hand;//= new int[dice];  
+    int[] hand = new int[5];  
     int totalScore = 0;
 
 
@@ -405,7 +405,6 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == next)
         {
             drpDwnDice.setVisible(false);
-            // drpDwnSides.setVisible(false);
             next.setVisible(false);
 
 
@@ -603,34 +602,6 @@ class introToYahtzeeGUI implements ActionListener
                 }
                 menuItem5.setText("5 Score: " + 5*currentCount);
             }
-
-            if (upperLowerArr.contains("6"))
-            {
-                menuItem6.setVisible(true);
-
-                int currentCount = 0;
-                for (int diePos = 0; diePos < dice; diePos++)
-                {
-                    if (hand[diePos] == 6)
-                        currentCount++;
-                }
-                menuItem6.setText("6 Score: " + 6*currentCount);
-            }
-
-            if (upperLowerArr.contains("7"))
-            {
-                menuItem7.setVisible(true);
-
-                int currentCount = 0;
-                for (int diePos = 0; diePos < dice; diePos++)
-                {
-                    if (hand[diePos] == 7)
-                        currentCount++;
-                }
-                menuItem7.setText("7 Score: " + 7*currentCount);
-            }
-
-
             topPanel.setBounds(0,0,600,600);
         }
 
@@ -832,45 +803,6 @@ class introToYahtzeeGUI implements ActionListener
             }
         }
 
-        if (e.getSource() == menuItem6)
-        {
-            int currentCount = 0;
-            for (int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == 6)
-                    currentCount++;
-            }
-            int temp = 6*currentCount;
-            if(temp > 0)
-            {
-                totalScore += temp;
-                label3.setText("Total score: " + totalScore);
-                menuItem6.setVisible(false);
-                upperLowerArr.remove("6");
-            }
-        }
-
-        if (e.getSource() == menuItem7)
-        {
-            int currentCount = 0;
-            for (int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == 7)
-                    currentCount++;
-            }
-            int temp = 7*currentCount;
-            if(temp > 0)
-            {
-                totalScore += temp;
-                label3.setText("Total score: " + totalScore);
-                menuItem7.setVisible(false);
-                upperLowerArr.remove("7");
-            }
-        }
-
-
-
-
 
         if (e.getSource() == scoreHide)
         {
@@ -886,8 +818,6 @@ class introToYahtzeeGUI implements ActionListener
             menuItem3.setVisible(false);
             menuItem4.setVisible(false);
             menuItem5.setVisible(false);
-            menuItem6.setVisible(false);
-            menuItem7.setVisible(false);
             menuItem3K.setVisible(false);
             menuItem4K.setVisible(false);
             menuItemFH.setVisible(false);
@@ -913,6 +843,7 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == rollDice)
         {  
             unhighlight();
+
 
             
             String dice1Roll = rollDie(sides);

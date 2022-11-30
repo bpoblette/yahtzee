@@ -18,11 +18,23 @@ public class scorecard
 
 
 
+
+    // sets up the player card for the scoreboard
     public ArrayList<String> setupPlayerCard(int players)
     {
+        ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(player);
+
+        ArrayList<Integer> a1 = new ArrayList<Integer>();
+        a1.add(1);
+        a1.add(2);
+        aList.add(a1);
+
         return null;
     }
 
+
+
+    // sets up the scores for all the players possible 
     public void setupPlayerScores(int players)
     {
         for (int i = 0; i < players; i++)

@@ -917,30 +917,6 @@ class intro implements ActionListener
         {  
             unhighlight();
             rerollDiceFunction();
-
-            
-            // String dice1Roll = diceClass.rollDice();
-            // dice1Button.setText(dice1Roll);
-            // hand[0] = Integer.parseInt(dice1Roll);
-            
-            // String dice2Roll = diceClass.rollDice();
-            // dice2Button.setText(dice2Roll);
-            // hand[1] = Integer.parseInt(dice2Roll);
-
-
-            // String dice3Roll = diceClass.rollDice();
-            // dice3Button.setText(dice3Roll);
-            // hand[2] = Integer.parseInt(dice3Roll);
-
-            
-            // String dice4Roll = diceClass.rollDice();
-            // dice4Button.setText(dice4Roll);
-            // hand[3] = Integer.parseInt(dice4Roll);
-
-            
-            // String dice5Roll = diceClass.rollDice();
-            // dice5Button.setText(dice5Roll);
-            // hand[4] = Integer.parseInt(dice5Roll);
         }
         
 

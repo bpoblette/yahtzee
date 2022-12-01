@@ -17,8 +17,9 @@ import java.util.ArrayList;
 
 class intro implements ActionListener
 {
-    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide,  menuItem1, menuItem2, menuItem3, 
-    dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
+    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide, menuItem3K, 
+        menuItem4K, menuItemFH, menuItemSS,menuItemLS, menuItemYL, menuItemC,menuItem1, menuItem2, menuItem3, 
+        menuItem4, menuItem5, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
 
     JLabel topLabel, midLabel, label3, label4, label5, label6, diceImage1, diceImage2, 
         diceImage3, diceImage4, diceImage5, displayScore; 
@@ -32,9 +33,9 @@ class intro implements ActionListener
 
 
 
-    // ArrayList<String> upperLowerArr = new ArrayList<String>();
     ArrayList<String> rerolledDice = new ArrayList<>();
     ArrayList<String> currentScorecard;
+    ArrayList<String> winners;
 
 
     // variblaes 
@@ -90,6 +91,50 @@ class intro implements ActionListener
 
 
 
+        menuItem3K = new JButton(); // 1
+        menuItem3K.setText("");
+        menuItem3K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem3K.setBounds(100,125,200,50);
+        menuItem3K.addActionListener(this);
+
+
+        menuItem4K = new JButton();
+        menuItem4K.setText("");
+        menuItem4K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4K.setBounds(100,175,200,50);
+        menuItem4K.addActionListener(this);
+
+        
+        menuItemFH = new JButton();
+        menuItemFH.setText("");
+        menuItemFH.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemFH.setBounds(100,225,200,50);
+        menuItemFH.addActionListener(this);
+        
+        menuItemLS = new JButton();
+        menuItemLS.setText("");
+        menuItemLS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemLS.setBounds(100,275,200,50);
+        menuItemLS.addActionListener(this);
+        
+        menuItemSS = new JButton();
+        menuItemSS.setText("");
+        menuItemSS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemSS.setBounds(100,325,200,50);
+        menuItemSS.addActionListener(this);
+        
+        menuItemYL = new JButton();
+        menuItemYL.setText("");
+        menuItemYL.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemYL.setBounds(100,375,200,50);
+        menuItemYL.addActionListener(this);
+        
+        menuItemC = new JButton();
+        menuItemC.setText("");
+        menuItemC.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemC.setBounds(100,425,200,50);
+        menuItemC.addActionListener(this);
+        
         menuItem1 = new JButton();
         menuItem1.setText("");
         menuItem1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
@@ -107,19 +152,50 @@ class intro implements ActionListener
         menuItem3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         menuItem3.setBounds(300,225,200,50);
         menuItem3.addActionListener(this);
-       
+        
+        menuItem4 = new JButton();
+        menuItem4.setText("");
+        menuItem4.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4.setBounds(300,275,200,50);
+        menuItem4.addActionListener(this);
+        
+        menuItem5 = new JButton();
+        menuItem5.setText("");
+        menuItem5.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem5.setBounds(300,325,200,50);
+        menuItem5.addActionListener(this);
+   
 
 
+        topPanel.add(menuItem3K);
+        topPanel.add(menuItem4K);
+        topPanel.add(menuItemFH);
+        topPanel.add(menuItemSS);
+        topPanel.add(menuItemLS);
+        topPanel.add(menuItemYL);
+        topPanel.add(menuItemC);
         topPanel.add(menuItem1);
         topPanel.add(menuItem2);
         topPanel.add(menuItem3);
+        topPanel.add(menuItem4);
+        topPanel.add(menuItem5);
 
 
 
- 
+
+        menuItem3K.setVisible(false);
+        menuItem4K.setVisible(false);
+        menuItemFH.setVisible(false);
+        menuItemLS.setVisible(false);
+        menuItemSS.setVisible(false);
+        menuItemYL.setVisible(false);
+        menuItemC.setVisible(false);
         menuItem1.setVisible(false);
         menuItem2.setVisible(false);
         menuItem3.setVisible(false);
+        menuItem4.setVisible(false);
+        menuItem5.setVisible(false);
+
 
         
 
@@ -414,6 +490,8 @@ class intro implements ActionListener
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
             label3.setBounds(10,0,250,100);
 
+            int score = 0;
+
 
 
 
@@ -456,6 +534,94 @@ class intro implements ActionListener
                 }
                 menuItem3.setText("3 Score: " + 3*currentCount);
             }
+            
+            if (currentScorecard.contains("4"))
+            {
+                menuItem4.setVisible(true);
+
+                int currentCount = 0;
+                for (int diePos = 0; diePos < dice; diePos++)
+                {
+                    if (hand[diePos] == 4)
+                        currentCount++;
+                }
+                menuItem4.setText("4 Score: " + 4*currentCount);
+            }
+
+            if (currentScorecard.contains("5"))
+            {
+                menuItem5.setVisible(true);
+
+                int currentCount = 0;
+                for (int diePos = 0; diePos < dice; diePos++)
+                {
+                    if (hand[diePos] == 5)
+                        currentCount++;
+                }
+                menuItem5.setText("5 Score: " + 5*currentCount);
+            }
+
+            if (currentScorecard.contains("3K"))
+            {   
+                menuItem3K.setVisible(true);
+                if (diceClass.maxOfAKindFound(hand) >= 3)
+                    score = diceClass.totalAllDice(hand);
+                menuItem3K.setText("3K Score: " + score);
+            }
+
+            if (currentScorecard.contains("4K"))
+            {
+                menuItem4K.setVisible(true);
+
+                if (diceClass.maxOfAKindFound(hand) >= 4)
+                    score = diceClass.totalAllDice(hand);
+                menuItem4K.setText("4K Score: " + score);
+            }
+
+            if (currentScorecard.contains("FH"))
+            {
+                menuItemFH.setVisible(true);
+
+                if (diceClass.fullHouseFound(hand))
+                    menuItemFH.setText("FH Score: " + 25);
+                else
+                    menuItemFH.setText("FH Score: " + 0);
+            }
+
+            if (currentScorecard.contains("SS"))
+            {
+                menuItemSS.setVisible(true);
+
+                if (diceClass.maxStraightFound(hand) >= 4)
+                    menuItemSS.setText("SS Score: " + 30);
+                else menuItemSS.setText("SS Score: " + 0);
+            }
+
+            if (currentScorecard.contains("LS"))
+            {
+                menuItemLS.setVisible(true);
+
+                if (diceClass.maxStraightFound(hand) >= 5)
+                    menuItemLS.setText("LS Score: " + 40);
+                else menuItemLS.setText("LS Score: " + 0);
+
+            }
+
+            if (currentScorecard.contains("YL"))
+            {
+                menuItemYL.setVisible(true);
+
+                if (diceClass.maxOfAKindFound(hand) >= 5)
+                    menuItemYL.setText("YL Score: " + 50);
+                else menuItemYL.setText("YL Score: " + 0);
+            }
+
+            if (currentScorecard.contains("C"))
+            {
+                menuItemC.setVisible(true);
+
+                menuItemC.setText("C Score: " + diceClass.totalAllDice(hand));
+            }
             topPanel.setBounds(0,0,600,600);
         }
 
@@ -464,6 +630,124 @@ class intro implements ActionListener
 
         // taking in each score if clicked on scorecard  
         // still need to fix
+
+
+        if (e.getSource() == menuItem3K)
+        {
+            int temp = 0;
+            if (diceClass.maxOfAKindFound(hand) >= 3)
+                temp = diceClass.totalAllDice(hand);
+            if (temp != 0 && onlyOne == false)
+            {
+                menuItem3K.setVisible(false);
+                currentScorecard.remove("3K");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+
+            }
+            onlyOne = true;
+        }
+
+        if (e.getSource() == menuItem4K)
+        {
+            int temp = 0;
+            if (diceClass.maxOfAKindFound(hand) >= 4)
+                temp = diceClass.totalAllDice(hand);
+            if (temp > 0 && onlyOne == false)
+            {
+                menuItem4K.setVisible(false);
+                currentScorecard.remove("4K");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItemFH)
+        {
+            int temp = 0;
+            if (diceClass.fullHouseFound(hand) == true)
+                temp = 25;
+
+            if (temp > 0 && onlyOne == false)
+            {
+                menuItemFH.setVisible(false);
+                currentScorecard.remove("FH");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItemSS)
+        {
+            int temp = 0;
+            if (diceClass.maxStraightFound(hand) >= 4)
+                temp = 30;
+
+            if (temp > 0 && onlyOne == false)
+            {
+                menuItemSS.setVisible(false);
+                currentScorecard.remove("SS");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItemLS)
+        {
+            int temp = 0;
+            if (diceClass.maxStraightFound(hand) >= 5)
+                temp = 40;
+            if (temp > 0 && onlyOne == false)
+            {
+                menuItemLS.setVisible(false);
+                currentScorecard.remove("LS");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItemYL)
+        {
+            int temp = 0;
+
+            if (diceClass.maxOfAKindFound(hand) >= 5)
+                temp = 50;
+            if (temp > 0 && onlyOne == false)
+            {
+                menuItemYL.setVisible(false);
+                currentScorecard.remove("YL");
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItemC)
+        {
+            if (diceClass.totalAllDice(hand) > 0 && onlyOne == false)
+            {
+                menuItemC.setVisible(false);
+                currentScorecard.remove("C");
+                int temp = diceClass.totalAllDice(hand);
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total Score: " + finalScore);
+            }
+            onlyOne = true;
+
+        }
 
         if (e.getSource() == menuItem1)
         {
@@ -537,6 +821,49 @@ class intro implements ActionListener
         }
 
 
+        if (e.getSource() == menuItem4)
+        {
+            int currentCount = 0;
+            for (int diePos = 0; diePos < dice; diePos++)
+            {
+                if (hand[diePos] == 4)
+                    currentCount++;
+            }
+            int temp = 4*currentCount;
+
+            if(temp > 0 && onlyOne == false)
+            {
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total score: " + finalScore);
+                menuItem4.setVisible(false);
+                currentScorecard.remove("4");
+            }
+            onlyOne = true;
+
+        }
+
+        if (e.getSource() == menuItem5)
+        {
+            int currentCount = 0;
+            for (int diePos = 0; diePos < dice; diePos++)
+            {
+                if (hand[diePos] == 5)
+                    currentCount++;
+            }
+            int temp = 5*currentCount;
+            if(temp > 0 && onlyOne == false) 
+            {
+                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
+                label3.setText("Total score: " + finalScore);
+                menuItem5.setVisible(false);
+                currentScorecard.remove("5");
+            }
+            onlyOne = true;
+
+        }
+
+
+
 
 
         if (e.getSource() == scoreHide)
@@ -557,6 +884,15 @@ class intro implements ActionListener
             menuItem1.setVisible(false);
             menuItem2.setVisible(false);
             menuItem3.setVisible(false);
+            menuItem4.setVisible(false);
+            menuItem5.setVisible(false);
+            menuItem3K.setVisible(false);
+            menuItem4K.setVisible(false);
+            menuItemFH.setVisible(false);
+            menuItemSS.setVisible(false);
+            menuItemLS.setVisible(false);
+            menuItemYL.setVisible(false);
+            menuItemC.setVisible(false);
            
 
             dice1Button.setVisible(true);
@@ -718,21 +1054,4 @@ class intro implements ActionListener
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -2,35 +2,116 @@ import java.util.ArrayList;
 
 public class scorecard 
 {
+    // static int player;
+    static ArrayList<Integer> scores = new ArrayList<>();
+    static ArrayList<ArrayList<String>> scorecard = new ArrayList<ArrayList<String>>();
+    
     int player;
-    ArrayList<Integer> scores = new ArrayList<>();
+
 
     scorecard()
     {
+        setupPlayerScores();
+        setupPlayerCard();
+    }
+
+
+    public static void main(String[] args) 
+    {
+    }
+
+
+    public void setPlayer(int player) {
+        this.player = player;
+    }
+
+    public static ArrayList<String> getSpecScorecard(int cur)
+    {
+        return scorecard.get(cur);
+    }
+
+
+
+    public static int getSpecScore(int cur)
+    {
+        return scores.get(cur);
+    }
+
+
+
+    public static int updateScores (int curPlayer, int addedScore)
+    {
+        // int finalScore = Integer.parseInt(scores.get(curPlayer));
+        // String finalScr = (finalScore + addedScore);
+        // scores.set(addedScore, finalScr)
+
+        // calcs the final score of prev score and new score being added
+        int finalScore = scores.get(curPlayer) + addedScore;
+        // sets the score
+        scores.set(curPlayer, finalScore);
+        return finalScore;
+    }
+
+
+    // sets up the player card for the scoreboard
+    public static void setupPlayerCard()
+    {
+        // ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
+
+        ArrayList<String> a1 = new ArrayList<String>();
+        ArrayList<String> a2 = new ArrayList<String>();
+        ArrayList<String> a3 = new ArrayList<String>();
+        ArrayList<String> a4 = new ArrayList<String>();
+        ArrayList<String> a5 = new ArrayList<String>();
+        ArrayList<String> a6 = new ArrayList<String>();
+        ArrayList<String> a7 = new ArrayList<String>();
+        ArrayList<String> a8 = new ArrayList<String>();
+
+
+        a1 = changeInitialArr(a1);
+        a2 = changeInitialArr(a2);
+        a3 = changeInitialArr(a3);
+        a4 = changeInitialArr(a4);
+        a5 = changeInitialArr(a5);
+        a5 = changeInitialArr(a6);
+        a5 = changeInitialArr(a7);
+        a5 = changeInitialArr(a8);
+
+
+        scorecard.add(a1);
+        scorecard.add(a2);
+        scorecard.add(a3);
+        scorecard.add(a4);
+        scorecard.add(a5);
+        scorecard.add(a6);
+        scorecard.add(a7);
+        scorecard.add(a8);
+
+
+
 
     }
 
 
 
-
-
-
-
-
-
-    public ArrayList<String> setupPlayerCard(int players)
+    // sets up the scores for all the players possible 
+    public static void setupPlayerScores()
     {
-        return null;
-    }
+        // for (int i = 0; i < players; i++)
+        //     scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
 
-    public void setupPlayerScores(int players)
-    {
-        for (int i = 0; i < players; i++)
-            scores.add(0);
     }
 
     // change intial array to be able to read for the scorecard
-    public ArrayList<String> changeInitialArr(ArrayList<String> list)
+    public static ArrayList<String> changeInitialArr(ArrayList<String> list)
     {
         for (int i = 1; i <= 5; i++) 
         {
@@ -42,6 +123,9 @@ public class scorecard
         list.add(name);
         return list;
     }
+
+
+    // public static void remove
 
 
 

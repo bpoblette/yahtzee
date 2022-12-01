@@ -13,9 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Random;
 
-class introToYahtzeeGUI implements ActionListener
+class finalProj implements ActionListener
 {
     JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide, menuItem3K, menuItem4K, menuItemFH,
     menuItemSS, menuItemLS,menuItemYL, menuItemC, menuItem1, menuItem2, menuItem3,menuItem4, menuItem5, 
@@ -40,12 +39,17 @@ class introToYahtzeeGUI implements ActionListener
     int dice = 5;
     int sides = 6;
     int player = 1;
-    int curenetPlayer = 1;
     int[] hand = new int[5];  
     int totalScore = 0;
+    int curenetPlayer = 1;
+
+    scorecard scoreClass = new scorecard();
+    dice diceClass = new dice();
+
+    
 
 
-    introToYahtzeeGUI(){
+    finalProj(){
         // creating a jframe and setting it to visible and creating a close button
         JFrame frame = new JFrame();
         frame.setLayout(null); 
@@ -69,10 +73,10 @@ class introToYahtzeeGUI implements ActionListener
         topPanel = new JPanel();
         midPanel = new JPanel();
         // lowPanel = new JPanel();
-        topPanel.setBackground(Color.black); // setting color of background panel
+        topPanel.setBackground(new Color(75, 75, 75)); // setting color of background panel
         topPanel.setBounds(0, 0, 600, 270);
 
-        midPanel.setBackground(Color.black); 
+        midPanel.setBackground(new Color(75, 75, 75)); 
         midPanel.setBounds(0, 270 , 600, 330);
 
 
@@ -244,11 +248,9 @@ class introToYahtzeeGUI implements ActionListener
 
         // label welcome 
         topLabel = new JLabel();
-        //topLabel.setText("Welcome to Yahtzee!");
-        ImageIcon icon = new ImageIcon("yahtzeeLogoSmall.jpg");
+        topLabel.setText("Welcome to Yahtzee!");
         topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
-        topLabel.setBounds(65,50,457, 150);
-        topLabel.setIcon(icon);
+        topLabel.setBounds(65,50,457,100);
 
 
 
@@ -355,7 +357,7 @@ class introToYahtzeeGUI implements ActionListener
 
     public static void main(String[] args)
     {
-        new introToYahtzeeGUI();
+        new finalProj();
     }
 
 
@@ -373,10 +375,7 @@ class introToYahtzeeGUI implements ActionListener
         {
             topLabel.setText("How many players would you like to play with?");
             topLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
-            topLabel.setIcon(null);
-            topLabel.setBounds(65,50,457, 100);
-            topPanel.setBackground(new Color(75, 75, 75));
-            midPanel.setBackground(new Color(75, 75, 75)); 
+
 
             // setting bounds for labels that say dice and sides
             label3.setText("Players: ");
@@ -422,21 +421,19 @@ class introToYahtzeeGUI implements ActionListener
             nextPlayer.setVisible(true);
             nextPlayerUp.setVisible(true);
             midPanel.add(nextPlayer);
+            midPanel.add(nextPlayerUp);
             midPanel.add(rollDice);
             midPanel.add(scoreShow);
-            midPanel.add(nextPlayerUp);
 
             label3.setText("");
 
             topLabel.setText("");
 
-            topLabel.setText("Player " + curenetPlayer);
+            topLabel.setText("Player " + player);
             topLabel.setFont(null);
             topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
 
-            upperLowerArr = changeInitialArr(upperLowerArr);
-
-            // diceImage2.setVisible(true);
+            upperLowerArr = scorecard.changeInitialArr(upperLowerArr);
 
         }
 
@@ -446,19 +443,13 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == nextPlayer)
         {
             rerollSelected();
-
             unhighlight();
         }
 
+
         if (e.getSource() == nextPlayerUp)
         {
-            // player = (player + 1) % player
-
-            
-
-            // topLabel.setText("idk");
-
-            curenetPlayer = ((curenetPlayer) % player) + 1;
+            curenetPlayer = (((curenetPlayer) % player) + 1);
 
             topLabel.setText("Player: " + curenetPlayer);
         }
@@ -495,8 +486,8 @@ class introToYahtzeeGUI implements ActionListener
             if (upperLowerArr.contains("3K"))
             {   
                 menuItem3K.setVisible(true);
-                if (maxOfAKindFound(hand) >= 3)
-                    score = totalAllDice(hand);
+                if (diceClass.maxOfAKindFound(hand) >= 3)
+                    score = diceClass.totalAllDice(hand);
                 menuItem3K.setText("3K Score: " + score);
             }
 
@@ -504,8 +495,8 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItem4K.setVisible(true);
 
-                if (maxOfAKindFound(hand) >= 4)
-                    score = totalAllDice(hand);
+                if (diceClass.maxOfAKindFound(hand) >= 4)
+                    score = diceClass.totalAllDice(hand);
                 menuItem4K.setText("4K Score: " + score);
             }
 
@@ -513,7 +504,7 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItemFH.setVisible(true);
 
-                if (fullHouseFound(hand))
+                if (diceClass.fullHouseFound(hand))
                     menuItemFH.setText("FH Score: " + 25);
                 else
                     menuItemFH.setText("FH Score: " + 0);
@@ -523,7 +514,7 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItemSS.setVisible(true);
 
-                if (maxStraightFound(hand) >= 4)
+                if (diceClass.maxStraightFound(hand) >= 4)
                     menuItemSS.setText("SS Score: " + 30);
                 else menuItemSS.setText("SS Score: " + 0);
             }
@@ -532,7 +523,7 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItemLS.setVisible(true);
 
-                if (maxStraightFound(hand) >= 5)
+                if (diceClass.maxStraightFound(hand) >= 5)
                     menuItemLS.setText("LS Score: " + 40);
                 else menuItemLS.setText("LS Score: " + 0);
                 
@@ -542,7 +533,7 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItemYL.setVisible(true);
 
-                if (maxOfAKindFound(hand) >= 5)
+                if (diceClass.maxOfAKindFound(hand) >= 5)
                     menuItemYL.setText("YL Score: " + 50);
                 else menuItemYL.setText("YL Score: " + 0);
             }
@@ -551,7 +542,7 @@ class introToYahtzeeGUI implements ActionListener
             {
                 menuItemC.setVisible(true);
 
-                menuItemC.setText("C Score: " + totalAllDice(hand));
+                menuItemC.setText("C Score: " + diceClass.totalAllDice(hand));
             }
 
             if (upperLowerArr.contains("1"))
@@ -629,13 +620,13 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == menuItem3K)
         {
             int temp = 0;
-            if (maxOfAKindFound(hand) >= 3)
-                temp = totalAllDice(hand);
+            if (diceClass.maxOfAKindFound(hand) >= 3)
+                temp = diceClass.totalAllDice(hand);
             if (temp != 0)
             {
                 menuItem3K.setVisible(false);
                 upperLowerArr.remove("3K");
-                totalScore += totalAllDice(hand);
+                totalScore += diceClass.totalAllDice(hand);
                 label3.setText("Total Score: " + totalScore);
 
             }
@@ -644,13 +635,13 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == menuItem4K)
         {
             int temp = 0;
-            if (maxOfAKindFound(hand) >= 4)
-                temp = totalAllDice(hand);
+            if (diceClass.maxOfAKindFound(hand) >= 4)
+                temp = diceClass.totalAllDice(hand);
             if (temp > 0)
             {
                 menuItem4K.setVisible(false);
                 upperLowerArr.remove("4K");
-                totalScore += totalAllDice(hand);
+                totalScore += diceClass.totalAllDice(hand);
                 label3.setText("Total Score: " + totalScore);
 
             }
@@ -659,7 +650,7 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == menuItemFH)
         {
             int temp = 0;
-            if (fullHouseFound(hand) == true)
+            if (diceClass.fullHouseFound(hand) == true)
                 temp = 25;
 
             if (temp > 0)
@@ -675,7 +666,7 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == menuItemSS)
         {
             int temp = 0;
-            if (maxStraightFound(hand) >= 4)
+            if (diceClass.maxStraightFound(hand) >= 4)
                 temp = 30;
 
             if (temp > 0)
@@ -691,7 +682,7 @@ class introToYahtzeeGUI implements ActionListener
         if (e.getSource() == menuItemLS)
         {
             int temp = 0;
-            if (maxStraightFound(hand) >= 5)
+            if (diceClass.maxStraightFound(hand) >= 5)
                 temp = 40;
             if (temp > 0)
             {
@@ -707,7 +698,7 @@ class introToYahtzeeGUI implements ActionListener
         {
             int temp = 0;
 
-            if (maxOfAKindFound(hand) >= 5)
+            if (diceClass.maxOfAKindFound(hand) >= 5)
                 temp = 50;
             if (temp > 0)
             {
@@ -720,11 +711,11 @@ class introToYahtzeeGUI implements ActionListener
 
         if (e.getSource() == menuItemC)
         {
-            if (totalAllDice(hand) > 0)
+            if (diceClass.totalAllDice(hand) > 0)
             {
                 menuItemC.setVisible(false);
                 upperLowerArr.remove("C");
-                totalScore += totalAllDice(hand);
+                totalScore += diceClass.totalAllDice(hand);
                 label3.setText("Total Score: " + totalScore);
             }
         }
@@ -827,7 +818,7 @@ class introToYahtzeeGUI implements ActionListener
             scoreShow.setVisible(true);
             rollDice.setVisible(true);
             scoreHide.setVisible(false);
-            topLabel.setText("Player " + player);
+            topLabel.setText("Player " + 6);
 
             menuItem1.setVisible(false);
             menuItem2.setVisible(false);
@@ -862,26 +853,26 @@ class introToYahtzeeGUI implements ActionListener
 
 
             
-            String dice1Roll = rollDie(sides);
+            String dice1Roll = diceClass.rollDice();
             dice1Button.setText(dice1Roll);
             hand[0] = Integer.parseInt(dice1Roll);
             
-            String dice2Roll = rollDie(sides);
+            String dice2Roll = diceClass.rollDice();
             dice2Button.setText(dice2Roll);
             hand[1] = Integer.parseInt(dice2Roll);
 
 
-            String dice3Roll = rollDie(sides);
+            String dice3Roll = diceClass.rollDice();
             dice3Button.setText(dice3Roll);
             hand[2] = Integer.parseInt(dice3Roll);
 
             
-            String dice4Roll = rollDie(sides);
+            String dice4Roll = diceClass.rollDice();
             dice4Button.setText(dice4Roll);
             hand[3] = Integer.parseInt(dice4Roll);
 
             
-            String dice5Roll = rollDie(sides);
+            String dice5Roll = diceClass.rollDice();
             dice5Button.setText(dice5Roll);
             hand[4] = Integer.parseInt(dice5Roll);
         }
@@ -949,112 +940,12 @@ class introToYahtzeeGUI implements ActionListener
     }
 
 
-    // returns random dice string
-    public String rollDie(int sides)
-    {
-        Random randy = new Random();
-        int roll = randy.nextInt(sides - 1 + 1) % sides + 1;
-        String name = String.valueOf(roll);
-        return name; // sides number of one
-    }
-
-
-
-    // change intial array
-    public ArrayList<String> changeInitialArr(ArrayList<String> list)
-    {
-        for (int i = 1; i <= dice; i++) 
-        {
-            String x  = String.valueOf(i);
-            list.add(x);
-        }
-        String[] upperArr = {"3K", "4K", "FH", "SS", "LS", "YL", "C"};
-        for (String name : upperArr)
-        list.add(name);
-        return list;
-    }
 
 
 
 
 
 
-    // max of a kind function 
-    public int maxOfAKindFound(int hand[])
-    {
-        int maxCount = 0;
-        int currentCount;
-
-        for (int dieVal = 1; dieVal <= dice+1; dieVal++)
-        {
-            currentCount = 0;
-            for(int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == dieVal)
-                    currentCount++;
-            }
-            if (currentCount > maxCount)
-                maxCount = currentCount;
-        }
-        return maxCount;
-    }
-
-
-    // max straight function
-    public int maxStraightFound(int hand[])
-    {
-        int maxLen = 1;
-        int curLen = 1;
-        
-        for (int counter = 0; counter < dice-1; counter++)
-        {
-            if (hand[counter] + 1 == hand[counter + 1])
-                curLen++;
-            else if (hand[counter] + 1 < hand[counter + 1])
-                curLen = 1;
-            if (curLen > maxLen)
-                maxLen = curLen;
-        }
-        return maxLen;
-    }
-
-
-    // full house functuon
-    public boolean fullHouseFound(int hand[])
-    {
-        boolean foundFH = false;
-        boolean found3K = false;
-        boolean found2K = false;
-        int currentCount;
-
-
-        for (int dieVal = 1; dieVal <= dice+1; dieVal++)
-        {
-            currentCount = 0;
-            for (int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == dieVal)
-                    currentCount++;
-            }
-            if (currentCount == 2)
-                found2K = true;
-            if (currentCount == 3)
-                found3K = true;
-        }
-        if (found2K == true && found3K == true)
-            return true;
-        return foundFH;
-    }
-
-
-    // ttotals the dice from hand
-    public int totalAllDice(int hand[])
-    {
-        int total = 0;
-        for (int diePos = 0; diePos < dice; diePos++)
-            total += hand[diePos];
-        return total;
-    }
 
 
 
@@ -1107,34 +998,34 @@ class introToYahtzeeGUI implements ActionListener
     {
         if (rerolledDice.contains("1"))
         {
-            String dice1Roll = rollDie(sides);
+            String dice1Roll = diceClass.rollDice();
             dice1Button.setText(dice1Roll);
             hand[0] = Integer.parseInt(dice1Roll);
         }
 
         if (rerolledDice.contains("2"))
         {
-            String dice2Roll = rollDie(sides);
+            String dice2Roll = diceClass.rollDice();
             dice2Button.setText(dice2Roll);
             hand[1] = Integer.parseInt(dice2Roll);
         }
 
         if (rerolledDice.contains("3"))
         {
-            String dice3Roll = rollDie(sides);
+            String dice3Roll = diceClass.rollDice();
             dice3Button.setText(dice3Roll);
             hand[2] = Integer.parseInt(dice3Roll);
         }
 
         if (rerolledDice.contains("4"))
         { 
-            String dice4Roll = rollDie(sides);
+            String dice4Roll = diceClass.rollDice();
             dice4Button.setText(dice4Roll);
             hand[3] = Integer.parseInt(dice4Roll);
         }
         if (rerolledDice.contains("5"))
         {            
-            String dice5Roll = rollDie(sides);
+            String dice5Roll = diceClass.rollDice();
             dice5Button.setText(dice5Roll);
             hand[4] = Integer.parseInt(dice5Roll);
         }

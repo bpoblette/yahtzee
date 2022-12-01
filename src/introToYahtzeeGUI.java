@@ -69,10 +69,10 @@ class introToYahtzeeGUI implements ActionListener
         topPanel = new JPanel();
         midPanel = new JPanel();
         // lowPanel = new JPanel();
-        topPanel.setBackground(new Color(75, 75, 75)); // setting color of background panel
+        topPanel.setBackground(Color.black); // setting color of background panel
         topPanel.setBounds(0, 0, 600, 270);
 
-        midPanel.setBackground(new Color(75, 75, 75)); 
+        midPanel.setBackground(Color.black); 
         midPanel.setBounds(0, 270 , 600, 330);
 
 
@@ -244,9 +244,11 @@ class introToYahtzeeGUI implements ActionListener
 
         // label welcome 
         topLabel = new JLabel();
-        topLabel.setText("Welcome to Yahtzee!");
+        //topLabel.setText("Welcome to Yahtzee!");
+        ImageIcon icon = new ImageIcon("yahtzeeLogoSmall.jpg");
         topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
-        topLabel.setBounds(65,50,457,100);
+        topLabel.setBounds(65,50,457, 150);
+        topLabel.setIcon(icon);
 
 
 
@@ -371,7 +373,10 @@ class introToYahtzeeGUI implements ActionListener
         {
             topLabel.setText("How many players would you like to play with?");
             topLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
-
+            topLabel.setIcon(null);
+            topLabel.setBounds(65,50,457, 100);
+            topPanel.setBackground(new Color(75, 75, 75));
+            midPanel.setBackground(new Color(75, 75, 75)); 
 
             // setting bounds for labels that say dice and sides
             label3.setText("Players: ");

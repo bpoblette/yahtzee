@@ -21,7 +21,7 @@ class intro implements ActionListener
         menuItem4K, menuItemFH, menuItemSS,menuItemLS, menuItemYL, menuItemC,menuItem1, menuItem2, menuItem3, 
         menuItem4, menuItem5, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
 
-    JLabel topLabel, midLabel, label3, label4, label5, label6, diceImage1, diceImage2, 
+    JLabel topLabel, midLabel, label3, label4, diceImage1, diceImage2, 
         diceImage3, diceImage4, diceImage5, displayScore; 
 
     JPanel topPanel, midPanel, lowPanel;
@@ -44,8 +44,8 @@ class intro implements ActionListener
     int sides = 6;
     int player = 1;
     int[] hand = new int[5];  
-    int totalScore = 0;
     int curenetPlayer = 1;
+    int turns = 1;
 
     scorecard scoreClass = new scorecard();
     dice diceClass = new dice();
@@ -76,7 +76,6 @@ class intro implements ActionListener
         // creating a panel
         topPanel = new JPanel();
         midPanel = new JPanel();
-        // lowPanel = new JPanel();
         topPanel.setBackground(new Color(75, 75, 75)); // setting color of background panel
         topPanel.setBounds(0, 0, 600, 270);
 
@@ -272,7 +271,7 @@ class intro implements ActionListener
         // label 4 blank intially 
         label4 = new JLabel();
         label4.setText("");
-        label4.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        label4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 
 
 
@@ -385,6 +384,7 @@ class intro implements ActionListener
             // setting bounds for labels that say dice and sides
             label3.setText("Players: ");
             label3.setBounds(150,100,120,100);
+            label4.setBounds(500,25,75, 25);
 
 
 
@@ -419,6 +419,10 @@ class intro implements ActionListener
             dice3Button.setVisible(true);
             dice4Button.setVisible(true);
             dice5Button.setVisible(true);
+            label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
+            label3.setBounds(10,0,250,100);
+
+
 
 
 
@@ -430,7 +434,7 @@ class intro implements ActionListener
             midPanel.add(rollDice);
             midPanel.add(scoreShow);
 
-            label3.setText("");
+            label4.setText("Turns: " + turns);
 
             topLabel.setText("");
 
@@ -448,9 +452,8 @@ class intro implements ActionListener
 
 
         // rerolls hgihlighted options whne clicked
-        if (e.getSource() == nextPlayer)
+        if (e.getSource() == nextPlayer && turns < 6)
         {
-            // temp = scoreClass.getSpecScorecard(curenetPlayer - 1);
             diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
             unhighlight();
         }
@@ -458,11 +461,12 @@ class intro implements ActionListener
 
         if (e.getSource() == nextPlayerUp)
         {
+            turns = 1;
+            label4.setText("Turn: " + turns);
             curenetPlayer = (((curenetPlayer) % player) + 1);
+            label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
             rerollDiceFunction();
-
             topLabel.setText("Player: " + curenetPlayer);
-
             currentScorecard = scorecard.getSpecScorecard((curenetPlayer - 1));
         }
 
@@ -483,12 +487,13 @@ class intro implements ActionListener
             dice3Button.setVisible(false);
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
+            label4.setVisible(false);
 
 
 
             topLabel.setText("Player " + curenetPlayer + " Scorecard");
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
-            label3.setBounds(10,0,250,100);
+            // label3.setBounds(10,0,250,100);
 
             int score = 0;
 
@@ -868,10 +873,14 @@ class intro implements ActionListener
 
         if (e.getSource() == scoreHide)
         {
+            label4.setVisible(true);
             // curenetPlayer = ((curenetPlayer + 1) % player) + 1;
             if (onlyOne == true)
             {
+                turns = 1;
+                label4.setText("Turn: " + turns);
                 curenetPlayer = (((curenetPlayer) % player) + 1);
+                label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
                 topLabel.setText("Player: " + curenetPlayer);
                 rerollDiceFunction();
             }
@@ -904,19 +913,21 @@ class intro implements ActionListener
             nextPlayer.setVisible(true);
 
             onlyOne = false;
-            // curenetPlayer = ((curenetPlayer + 1) % player) + 1;
-            
 
-            label3.setText("");
+            // curenetPlayer = ((curenetPlayer + 1) % player) + 1;
+
         }
 
 
 
         // function that rolls dice and updates the text on the button
-        if (e.getSource() == rollDice)
+        if (e.getSource() == rollDice && turns < 6)
         {  
             unhighlight();
             rerollDiceFunction();
+            turns ++;
+            label4.setText("Turn: " + turns);
+            // turns ++;
         }
         
 
@@ -995,6 +1006,12 @@ class intro implements ActionListener
     // simple function to unhiglihgt selected dice
     public void unhighlight()
     {
+        if (rerolledDice.isEmpty() == false)
+        {
+            turns ++;
+            label4.setText("Turn: " + turns);
+            // turns ++;
+        }
         if (rerolledDice.contains("1"))
         {
             // dice1Button.setOpaque(false);
@@ -1063,6 +1080,3 @@ class intro implements ActionListener
         hand[4] = Integer.parseInt(dice5Roll);
     }
 }
-
-
-

@@ -453,13 +453,13 @@ class intro implements ActionListener
             // temp = scoreClass.getSpecScorecard(curenetPlayer - 1);
             diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
             unhighlight();
-            System.out.println(currentScorecard + " " + curenetPlayer);
         }
 
 
         if (e.getSource() == nextPlayerUp)
         {
             curenetPlayer = (((curenetPlayer) % player) + 1);
+            rerollDiceFunction();
 
             topLabel.setText("Player: " + curenetPlayer);
 
@@ -873,6 +873,7 @@ class intro implements ActionListener
             {
                 curenetPlayer = (((curenetPlayer) % player) + 1);
                 topLabel.setText("Player: " + curenetPlayer);
+                rerollDiceFunction();
             }
             unhighlight();
             topPanel.setBounds(0,0,600,270);
@@ -915,31 +916,33 @@ class intro implements ActionListener
         if (e.getSource() == rollDice)
         {  
             unhighlight();
+            rerollDiceFunction();
 
             
-            String dice1Roll = diceClass.rollDice();
-            dice1Button.setText(dice1Roll);
-            hand[0] = Integer.parseInt(dice1Roll);
+            // String dice1Roll = diceClass.rollDice();
+            // dice1Button.setText(dice1Roll);
+            // hand[0] = Integer.parseInt(dice1Roll);
             
-            String dice2Roll = diceClass.rollDice();
-            dice2Button.setText(dice2Roll);
-            hand[1] = Integer.parseInt(dice2Roll);
+            // String dice2Roll = diceClass.rollDice();
+            // dice2Button.setText(dice2Roll);
+            // hand[1] = Integer.parseInt(dice2Roll);
 
 
-            String dice3Roll = diceClass.rollDice();
-            dice3Button.setText(dice3Roll);
-            hand[2] = Integer.parseInt(dice3Roll);
-
-            
-            String dice4Roll = diceClass.rollDice();
-            dice4Button.setText(dice4Roll);
-            hand[3] = Integer.parseInt(dice4Roll);
+            // String dice3Roll = diceClass.rollDice();
+            // dice3Button.setText(dice3Roll);
+            // hand[2] = Integer.parseInt(dice3Roll);
 
             
-            String dice5Roll = diceClass.rollDice();
-            dice5Button.setText(dice5Roll);
-            hand[4] = Integer.parseInt(dice5Roll);
+            // String dice4Roll = diceClass.rollDice();
+            // dice4Button.setText(dice4Roll);
+            // hand[3] = Integer.parseInt(dice4Roll);
+
+            
+            // String dice5Roll = diceClass.rollDice();
+            // dice5Button.setText(dice5Roll);
+            // hand[4] = Integer.parseInt(dice5Roll);
         }
+        
 
 
     
@@ -1054,4 +1057,36 @@ class intro implements ActionListener
 
         }
     }
+
+
+
+    public void rerollDiceFunction()
+    {
+
+        String dice1Roll = diceClass.rollDice();
+        dice1Button.setText(dice1Roll);
+        hand[0] = Integer.parseInt(dice1Roll);
+        
+        String dice2Roll = diceClass.rollDice();
+        dice2Button.setText(dice2Roll);
+        hand[1] = Integer.parseInt(dice2Roll);
+
+
+        String dice3Roll = diceClass.rollDice();
+        dice3Button.setText(dice3Roll);
+        hand[2] = Integer.parseInt(dice3Roll);
+
+        
+        String dice4Roll = diceClass.rollDice();
+        dice4Button.setText(dice4Roll);
+        hand[3] = Integer.parseInt(dice4Roll);
+
+        
+        String dice5Roll = diceClass.rollDice();
+        dice5Button.setText(dice5Roll);
+        hand[4] = Integer.parseInt(dice5Roll);
+    }
 }
+
+
+

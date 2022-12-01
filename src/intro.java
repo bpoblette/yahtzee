@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 class intro implements ActionListener
 {
-    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide,  menuItem1, menuItem2, menuItem3, 
+    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide,  menuItem1, menuItem2, menuItem3, menuItem4, menuItem5, 
+    menuItem3K, menuItem4K, menuItemFH, menuItemSS, menuItemLS,menuItemYL, menuItemC, 
     dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
 
     JLabel topLabel, midLabel, label3, label4, label5, label6, diceImage1, diceImage2, 
@@ -106,12 +107,77 @@ class intro implements ActionListener
         menuItem3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
         menuItem3.setBounds(300,225,200,50);
         menuItem3.addActionListener(this);
-       
+        
+        menuItem4 = new JButton();
+        menuItem4.setText("");
+        menuItem4.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4.setBounds(300,275,200,50);
+        menuItem4.addActionListener(this);
+         
+        menuItem5 = new JButton();
+        menuItem5.setText("");
+        menuItem5.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem5.setBounds(300,325,200,50);
+        menuItem5.addActionListener(this);
+        
+        menuItem3K = new JButton();
+        menuItem3K.setText("");
+        menuItem3K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem3K.setBounds(500,125,200,50);
+        menuItem3K.addActionListener(this);
+        
+        menuItem4K = new JButton();
+        menuItem4K.setText("");
+        menuItem4K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4K.setBounds(500,175,200,50);
+        menuItem4K.addActionListener(this);
+        
+        menuItemFH = new JButton();
+        menuItemFH.setText("");
+        menuItemFH.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemFH.setBounds(500,225,200,50);
+        menuItemFH.addActionListener(this);
+        
+        menuItemSS = new JButton();
+        menuItemSS.setText("");
+        menuItemSS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemSS.setBounds(500,275,200,50);
+        menuItemSS.addActionListener(this);
 
+        menuItemLS = new JButton();
+        menuItemLS.setText("");
+        menuItemLS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemLS.setBounds(500,275,200,50);
+        menuItemLS.addActionListener(this);
 
+        menuItemYL = new JButton();
+        menuItemYL.setText("");
+        menuItemYL.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemYL.setBounds(500,325,200,50);
+        menuItemYL.addActionListener(this);
+        
+        menuItemC = new JButton();
+        menuItemC.setText("");
+        menuItemC.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemC.setBounds(500,325,200,50);
+        menuItemC.addActionListener(this);
+                
+        
         topPanel.add(menuItem1);
         topPanel.add(menuItem2);
         topPanel.add(menuItem3);
+        topPanel.add(menuItem4);
+        topPanel.add(menuItem5);
+        topPanel.add(menuItem3K);
+        topPanel.add(menuItem4k);
+        topPanel.add(menuItemFH);
+        topPanel.add(menuItemSS);
+        topPanel.add(menuItemLS);
+        topPanel.add(menuItemYL);
+        topPanel.add(menuItemC);
+      
+
+
 
 
 

@@ -2,8 +2,11 @@ import java.util.ArrayList;
 
 public class scorecard 
 {
-    int player;
-    ArrayList<Integer> scores = new ArrayList<>();
+    // static int player;
+    static ArrayList<Integer> scores = new ArrayList<>();
+    static ArrayList<ArrayList<String>> scorecard;
+
+
 
     scorecard()
     {
@@ -11,7 +14,12 @@ public class scorecard
     }
 
 
+    public static void main(String[] args) 
+    {
+        // setupPlayerCard(5,3);
 
+
+    }
 
 
 
@@ -20,29 +28,31 @@ public class scorecard
 
 
     // sets up the player card for the scoreboard
-    public ArrayList<String> setupPlayerCard(int players)
+    public static ArrayList<ArrayList<String>> setupPlayerCard(int playersTotal)
     {
-        ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(player);
+        ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
 
-        ArrayList<Integer> a1 = new ArrayList<Integer>();
-        a1.add(1);
-        a1.add(2);
-        aList.add(a1);
+        ArrayList<String> a1 = new ArrayList<String>();
+        a1 = changeInitialArr(a1);
+        for (int i = 0; i < playersTotal; i++)
+            scoreList.add(a1);
+        // System.out.println(scoreList);
+        // System.out.println(scoreList.get(currentplayer+1));//.get(currentplayer+1));
 
-        return null;
+        return scoreList;
     }
 
 
 
     // sets up the scores for all the players possible 
-    public void setupPlayerScores(int players)
+    public static void setupPlayerScores(int players)
     {
         for (int i = 0; i < players; i++)
             scores.add(0);
     }
 
     // change intial array to be able to read for the scorecard
-    public ArrayList<String> changeInitialArr(ArrayList<String> list)
+    public static ArrayList<String> changeInitialArr(ArrayList<String> list)
     {
         for (int i = 1; i <= 5; i++) 
         {
@@ -54,6 +64,9 @@ public class scorecard
         list.add(name);
         return list;
     }
+
+
+    // public static void remove
 
 
 

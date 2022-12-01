@@ -10,7 +10,7 @@ public class scorecard
 
     scorecard()
     {
-        setupPlayerScores(5);
+        setupPlayerScores(2);
         setupPlayerCard(2);
         System.out.println(scorecard);
         System.out.println(scores);
@@ -20,6 +20,15 @@ public class scorecard
     public static void main(String[] args) 
     {
     }
+
+
+
+    public static ArrayList<String> getSpecScorecard(int cur)
+    {
+        return scorecard.get(cur);
+    }
+
+
 
     public static int getSpecScore(int cur)
     {
@@ -38,7 +47,6 @@ public class scorecard
         int finalScore = scores.get(curPlayer) + addedScore;
         // sets the score
         scores.set(curPlayer, finalScore);
-        System.out.println(finalScore);
         System.out.println(scores);
         return finalScore;
     }
@@ -50,9 +58,40 @@ public class scorecard
         // ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
 
         ArrayList<String> a1 = new ArrayList<String>();
+        ArrayList<String> a2 = new ArrayList<String>();
+        ArrayList<String> a3 = new ArrayList<String>();
+        ArrayList<String> a4 = new ArrayList<String>();
+        ArrayList<String> a5 = new ArrayList<String>();
+        ArrayList<String> a6 = new ArrayList<String>();
+        ArrayList<String> a7 = new ArrayList<String>();
+        ArrayList<String> a8 = new ArrayList<String>();
+
+
         a1 = changeInitialArr(a1);
-        for (int i = 0; i < playersTotal; i++)
-            scorecard.add(a1);
+        a2 = changeInitialArr(a2);
+        a3 = changeInitialArr(a3);
+        a4 = changeInitialArr(a4);
+        a5 = changeInitialArr(a5);
+        a5 = changeInitialArr(a6);
+        a5 = changeInitialArr(a7);
+        a5 = changeInitialArr(a8);
+
+
+        scorecard.add(a1);
+        scorecard.add(a2);
+        scorecard.add(a3);
+        scorecard.add(a4);
+        scorecard.add(a5);
+        scorecard.add(a6);
+        scorecard.add(a7);
+        scorecard.add(a8);
+
+
+
+
+
+        // for (int i = 0; i < playersTotal; i++)
+        //     scorecard.add(a1);
         // System.out.println(scoreList);
         // System.out.println(scoreList.get(currentplayer+1));//.get(currentplayer+1));
 

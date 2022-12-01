@@ -5,15 +5,14 @@ public class scorecard
     // static int player;
     static ArrayList<Integer> scores = new ArrayList<>();
     static ArrayList<ArrayList<String>> scorecard = new ArrayList<ArrayList<String>>();
-
+    
+    int player;
 
 
     scorecard()
     {
-        setupPlayerScores(2);
-        setupPlayerCard(2);
-        System.out.println(scorecard);
-        System.out.println(scores);
+        setupPlayerScores();
+        setupPlayerCard();
     }
 
 
@@ -22,6 +21,9 @@ public class scorecard
     }
 
 
+    public void setPlayer(int player) {
+        this.player = player;
+    }
 
     public static ArrayList<String> getSpecScorecard(int cur)
     {
@@ -47,13 +49,12 @@ public class scorecard
         int finalScore = scores.get(curPlayer) + addedScore;
         // sets the score
         scores.set(curPlayer, finalScore);
-        System.out.println(scores);
         return finalScore;
     }
 
 
     // sets up the player card for the scoreboard
-    public static void setupPlayerCard(int playersTotal)
+    public static void setupPlayerCard()
     {
         // ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
 
@@ -89,22 +90,24 @@ public class scorecard
 
 
 
-
-        // for (int i = 0; i < playersTotal; i++)
-        //     scorecard.add(a1);
-        // System.out.println(scoreList);
-        // System.out.println(scoreList.get(currentplayer+1));//.get(currentplayer+1));
-
-        // return scoreList;
     }
 
 
 
     // sets up the scores for all the players possible 
-    public static void setupPlayerScores(int players)
+    public static void setupPlayerScores()
     {
-        for (int i = 0; i < players; i++)
-            scores.add(0);
+        // for (int i = 0; i < players; i++)
+        //     scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+        scores.add(0);
+
     }
 
     // change intial array to be able to read for the scorecard

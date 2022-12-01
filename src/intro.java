@@ -36,8 +36,8 @@ class intro implements ActionListener
     ArrayList<String> currentScorecard;
 
 
-    // flags for start of game
-
+    // variblaes 
+    boolean onlyOne = false;
     int dice = 5;
     int sides = 6;
     int player = 1;
@@ -364,8 +364,8 @@ class intro implements ActionListener
             // upperLowerArr = scorecard.changeInitialArr(upperLowerArr);
             
 
-            
-
+            // scorecard.player = player;
+            scoreClass.setPlayer(player);
         }
 
 
@@ -374,10 +374,9 @@ class intro implements ActionListener
         if (e.getSource() == nextPlayer)
         {
             // temp = scoreClass.getSpecScorecard(curenetPlayer - 1);
-            diceClass.rerollSelected(currentScorecard, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
+            diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
             unhighlight();
-
-            // System.out.println(curenetPlayer + " " + currentScorecard);
+            System.out.println(currentScorecard + " " + curenetPlayer);
         }
 
 
@@ -388,9 +387,6 @@ class intro implements ActionListener
             topLabel.setText("Player: " + curenetPlayer);
 
             currentScorecard = scorecard.getSpecScorecard((curenetPlayer - 1));
-
-            System.out.println(curenetPlayer + " " + currentScorecard);
-
         }
 
 
@@ -400,7 +396,6 @@ class intro implements ActionListener
         if (e.getSource() == scoreShow)
         {
             currentScorecard = scorecard.getSpecScorecard(curenetPlayer - 1);
-            System.out.println(currentScorecard);
 
             nextPlayer.setVisible(false);
             scoreShow.setVisible(false);
@@ -460,94 +455,6 @@ class intro implements ActionListener
                 }
                 menuItem3.setText("3 Score: " + 3*currentCount);
             }
-            
-            if (currentScorecard.contains("4"))
-            {
-                menuItem4.setVisible(true);
-
-                int currentCount = 0;
-                for (int diePos = 0; diePos < dice; diePos++)
-                {
-                    if (hand[diePos] == 4)
-                        currentCount++;
-                }
-                menuItem4.setText("4 Score: " + 4*currentCount);
-            }
-
-            if (currentScorecard.contains("5"))
-            {
-                menuItem5.setVisible(true);
-
-                int currentCount = 0;
-                for (int diePos = 0; diePos < dice; diePos++)
-                {
-                    if (hand[diePos] == 5)
-                        currentCount++;
-                }
-                menuItem5.setText("5 Score: " + 5*currentCount);
-            }
-            
-            if (currentScorecard.contains("3K"))
-            {   
-                menuItem3K.setVisible(true);
-                if (maxOfAKindFound(hand) >= 3)
-                    score = totalAllDice(hand);
-                menuItem3K.setText("3K Score: " + score);
-            }
-
-            if (currentScorecard.contains("4K"))
-            {
-                menuItem4K.setVisible(true);
-
-                if (maxOfAKindFound(hand) >= 4)
-                    score = totalAllDice(hand);
-                menuItem4K.setText("4K Score: " + score);
-            }
-
-            if (currentScorecard.contains("FH"))
-            {
-                menuItemFH.setVisible(true);
-
-                if (fullHouseFound(hand))
-                    menuItemFH.setText("FH Score: " + 25);
-                else
-                    menuItemFH.setText("FH Score: " + 0);
-            }
-
-            if (currentScorecard.contains("SS"))
-            {
-                menuItemSS.setVisible(true);
-
-                if (maxStraightFound(hand) >= 4)
-                    menuItemSS.setText("SS Score: " + 30);
-                else menuItemSS.setText("SS Score: " + 0);
-            }
-
-            if (currentScorecard.contains("LS"))
-            {
-                menuItemLS.setVisible(true);
-
-                if (maxStraightFound(hand) >= 5)
-                    menuItemLS.setText("LS Score: " + 40);
-                else menuItemLS.setText("LS Score: " + 0);
-                
-            }
-
-            if (currentScorecard.contains("YL"))
-            {
-                menuItemYL.setVisible(true);
-
-                if (maxOfAKindFound(hand) >= 5)
-                    menuItemYL.setText("YL Score: " + 50);
-                else menuItemYL.setText("YL Score: " + 0);
-            }
-
-            if (currentScorecard.contains("C"))
-            {
-                menuItemC.setVisible(true);
-
-                menuItemC.setText("C Score: " + totalAllDice(hand));
-            }
             topPanel.setBounds(0,0,600,600);
         }
 
@@ -572,7 +479,7 @@ class intro implements ActionListener
 
 
 
-            if(temp > 0)
+            if(temp > 0 && onlyOne == false)
             {
                 menuItem1.setVisible(false);
                 currentScorecard.remove("1");
@@ -581,6 +488,8 @@ class intro implements ActionListener
 
 
             }
+
+            onlyOne = true;
         }
 
         if (e.getSource() == menuItem2)
@@ -592,13 +501,17 @@ class intro implements ActionListener
                     currentCount++;
             }
             int temp = 2*currentCount;
-            if(temp > 0)
+            if(temp > 0 && onlyOne == false)
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
                 menuItem2.setVisible(false);
                 currentScorecard.remove("2");
             }
+
+
+            onlyOne = true;
+
         }
 
         if (e.getSource() == menuItem3)
@@ -610,67 +523,27 @@ class intro implements ActionListener
                     currentCount++;
             }
             int temp = 3*currentCount;
-            if(temp > 0)
+            if(temp > 0 && onlyOne == false)
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
                 menuItem3.setVisible(false);
                 currentScorecard.remove("3");
             }
-        }
-        
-        if (e.getSource() == menuItem4)
-        {
-            int currentCount = 0;
-            for (int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == 4)
-                    currentCount++;
-            }
-            int temp = 4*currentCount;
-            if(temp > 0)
-            {
-                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
-                label3.setText("Total score: " + finalScore);
-                menuItem3.setVisible(false);
-                currentScorecard.remove("4");
-            }
+
+
+            onlyOne = true;
         }
 
-        if (e.getSource() == menuItem5)
-        {
-            int currentCount = 0;
-            for (int diePos = 0; diePos < dice; diePos++)
-            {
-                if (hand[diePos] == 5)
-                    currentCount++;
-            }
-            int temp = 5*currentCount;
-            if(temp > 0)
-            {
-                int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
-                label3.setText("Total score: " + finalScore);
-                menuItem3.setVisible(false);
-                currentScorecard.remove("5");
-            }
-        }
 
-        if (e.getSource() == menuItem3K)
-        {
-            int temp = 0;
-            if (maxOfAKindFound(hand) >= 3)
-                temp = totalAllDice(hand);
-            if (temp != 0)
-            {
-                int finalScore = totalAllDice(hand);
-                label3.setText("Total Score: " + finalScore);
-                menuItem3K.setVisible(false);
-                currentScorecard.remove("3K");
-            }
-        }
+
 
         if (e.getSource() == scoreHide)
         {
+            // curenetPlayer = ((curenetPlayer + 1) % player) + 1;
+            curenetPlayer = (((curenetPlayer) % player) + 1);
+            topLabel.setText("Player: " + curenetPlayer);
+
             unhighlight();
             topPanel.setBounds(0,0,600,270);
             scoreShow.setVisible(true);
@@ -681,10 +554,6 @@ class intro implements ActionListener
             menuItem1.setVisible(false);
             menuItem2.setVisible(false);
             menuItem3.setVisible(false);
-            menuItem4.setVisible(false);
-            menuItem5.setVisible(false);
-     
-
            
 
             dice1Button.setVisible(true);
@@ -694,6 +563,9 @@ class intro implements ActionListener
             dice5Button.setVisible(true);
             nextPlayer.setVisible(true);
 
+            onlyOne = false;
+            // curenetPlayer = ((curenetPlayer + 1) % player) + 1;
+            
 
             label3.setText("");
         }

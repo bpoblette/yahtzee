@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 class intro implements ActionListener
 {
-    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide, menuItem1, menuItem2, menuItem3, 
+    JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide,  menuItem1, menuItem2, menuItem3, 
     dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp;
 
     JLabel topLabel, midLabel, label3, label4, label5, label6, diceImage1, diceImage2, 
@@ -384,6 +384,8 @@ class intro implements ActionListener
             curenetPlayer = (((curenetPlayer) % player) + 1);
 
             topLabel.setText("Player: " + curenetPlayer);
+
+            currentScorecard = scorecard.getSpecScorecard(curenetPlayer);
         }
 
 
@@ -393,7 +395,7 @@ class intro implements ActionListener
         if (e.getSource() == scoreShow)
         {
             currentScorecard = scorecard.getSpecScorecard(curenetPlayer - 1);
-
+            System.out.println(currentScorecard);
 
             nextPlayer.setVisible(false);
             scoreShow.setVisible(false);
@@ -517,7 +519,6 @@ class intro implements ActionListener
             int temp = 3*currentCount;
             if(temp > 0)
             {
-                System.out.println(curenetPlayer);
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
                 menuItem3.setVisible(false);

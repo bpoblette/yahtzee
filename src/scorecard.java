@@ -4,42 +4,59 @@ public class scorecard
 {
     // static int player;
     static ArrayList<Integer> scores = new ArrayList<>();
-    static ArrayList<ArrayList<String>> scorecard;
+    static ArrayList<ArrayList<String>> scorecard = new ArrayList<ArrayList<String>>();
 
 
 
     scorecard()
     {
-
+        setupPlayerScores(5);
+        setupPlayerCard(2);
+        System.out.println(scorecard);
+        System.out.println(scores);
     }
 
 
     public static void main(String[] args) 
     {
-        // setupPlayerCard(5,3);
+    }
 
-
+    public static int getSpecScore(int cur)
+    {
+        return scores.get(cur);
     }
 
 
 
+    public static int updateScores (int curPlayer, int addedScore)
+    {
+        // int finalScore = Integer.parseInt(scores.get(curPlayer));
+        // String finalScr = (finalScore + addedScore);
+        // scores.set(addedScore, finalScr)
 
-
+        // calcs the final score of prev score and new score being added
+        int finalScore = scores.get(curPlayer) + addedScore;
+        // sets the score
+        scores.set(curPlayer, finalScore);
+        System.out.println(finalScore);
+        System.out.println(scores);
+        return finalScore;
+    }
 
 
     // sets up the player card for the scoreboard
-    public static ArrayList<ArrayList<String>> setupPlayerCard(int playersTotal)
+    public static void setupPlayerCard(int playersTotal)
     {
-        ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
+        // ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
 
         ArrayList<String> a1 = new ArrayList<String>();
         a1 = changeInitialArr(a1);
         for (int i = 0; i < playersTotal; i++)
-            scoreList.add(a1);
+            scorecard.add(a1);
         // System.out.println(scoreList);
         // System.out.println(scoreList.get(currentplayer+1));//.get(currentplayer+1));
 
-        return scoreList;
+        // return scoreList;
     }
 
 

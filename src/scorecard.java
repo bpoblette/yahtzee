@@ -131,7 +131,24 @@ public class scorecard
 
 
 
-
+    // checks to see if all arrays are empty
+    public static boolean checkGameOver()
+    {
+        boolean isEmpty = false;
+        int counter = 0;
+        for(ArrayList<String> playerScorecards : scorecard)
+        {
+            if(playerScorecards.isEmpty() == true)
+            {
+                counter++;
+            }
+        }
+        if(counter == scorecard.size())
+        {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
 
 
 

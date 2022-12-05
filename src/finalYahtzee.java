@@ -18,7 +18,7 @@ class finalYahtzee implements ActionListener
         menuItem4K, menuItemFH, menuItemSS,menuItemLS, menuItemYL, menuItemC,menuItem1, menuItem2, menuItem3, 
         menuItem4, menuItem5, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp, endGame;
 
-    JLabel topLabel, midLabel, label3, label4; 
+    JLabel topLabel, midLabel, label3, label4, label5, label6, label7, label8; 
 
     JPanel topPanel, midPanel, lowPanel, endPanel;
 
@@ -246,6 +246,27 @@ class finalYahtzee implements ActionListener
         label4 = new JLabel();
         label4.setText("");
         label4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+        // label 5 blank intially 
+        label5 = new JLabel();
+        label5.setText("");
+        label5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+        // label 6 blank intially 
+        label6 = new JLabel();
+        label6.setText("");
+        label6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+        // label 7 blank intially 
+        label7 = new JLabel();
+        label7.setText("");
+        label7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+        // label 8 blank intially 
+        label8 = new JLabel();
+        label8.setText("");
+        label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        
 
 
 
@@ -973,21 +994,34 @@ class finalYahtzee implements ActionListener
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
             endGame.setVisible(false);
-            label4.setText("");
-            label3.setText("");
-            topLabel.setText("");
+            // topLabel.setText("Player 1");
+            // topLabel.setFont("Times New Roman", Font.PLAIN, 20);
+            // midLabel.setText("Player 2");
+            // midLabel.setFont("Times New Roman", Font.PLAIN, 20);
+            // label3.setText("Player 3");
+            // Label3.setFont("Times New Roman", Font.PLAIN, 20);
+            // label4.setText("Player 4");
+            // label4.setFont("Times New Roman", Font.PLAIN, 20);
+            // label5.setText("Player 5");
+            // label5.setFont("Times New Roman", Font.PLAIN, 20);
+            // label6.setText("Player 6");
+            // label6.setFont("Times New Roman", Font.PLAIN, 20);
+            // label7.setText("Player 7");
+            // label7.setFont("Times New Roman", Font.PLAIN, 20);
+            // label8.setText("Player 8");
+            // label8.setFont("Times New Roman", Font.PLAIN, 20);
+
+
+            topLabel.setBounds(250, 0, 100, 50);
+            midLabel.setBounds(250, 75, 100, 50);
+            label3.setBounds(250, 150, 100, 50);
+            label4.setBounds(250, 225, 100, 50);
+            label5.setBounds(250, 300, 100, 50);
+            label6.setBounds(250, 375, 100, 50);
+            label7.setBounds(250, 450, 100, 50);
+            label8.setBounds(250, 525, 100, 50);
         }
     }
-
-
-    
-
-
-
-
-
-
-
 
 
 

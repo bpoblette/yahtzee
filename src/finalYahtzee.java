@@ -56,18 +56,6 @@ class finalYahtzee implements ActionListener
         frame.setSize(600,600); //setting size
         frame.setLocationRelativeTo(null); // putting it in the middle 
 
-        JFrame endFrame = new JFrame();
-        endFrame.setLayout(null);
-        endFrame.setTitle("End Game");
-        endFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        endFrame.setSize(300, 500);
-        endFrame.setLocationRelativeTo(null);
-
-        endPanel = new JPanel();
-        endPanel.setBackground(new Color(205, 35, 35));
-        endPanel.setBounds(0, 0, 300, 500);
-
-
         // creating a drop down menu for dice
         drpDwnDice = new JComboBox<String>(playerOpts);
         drpDwnDice.addActionListener(this);
@@ -342,7 +330,6 @@ class finalYahtzee implements ActionListener
         scoreHide.setVisible(false);
         frame.add(topPanel);
         frame.add(midPanel);
-        endFrame.add(endPanel);
 
         frame.setVisible(true);
        // endFrame.setVisible(true);
@@ -974,24 +961,21 @@ class finalYahtzee implements ActionListener
         // game ending frame 
         if (e.getSource() == endGame)
         {
-            // TODO
-
-            endFrame.setVisible(true);
-
-            // nextPlayer.setVisible(false);
-            // nextPlayerUp.setVisible(false);
-            // scoreShow.setVisible(false);
-            // rollDice.setVisible(false);
-            // scoreHide.setVisible(true);
-            // dice1Button.setVisible(false);
-            // dice2Button.setVisible(false);
-            // dice3Button.setVisible(false);
-            // dice4Button.setVisible(false);
-            // dice5Button.setVisible(false);
-            // label4.setVisible(false);
-            // label3.setVisible(false);
-            // topLabel.setVisible(false);
-
+            topPanel.setBounds(0,0,600,600);
+            topPanel.setBackground(Color.red);
+            nextPlayer.setVisible(false);
+            nextPlayerUp.setVisible(false);
+            scoreShow.setVisible(false);
+            rollDice.setVisible(false);
+            dice1Button.setVisible(false);
+            dice2Button.setVisible(false);
+            dice3Button.setVisible(false);
+            dice4Button.setVisible(false);
+            dice5Button.setVisible(false);
+            endGame.setVisible(false);
+            label4.setText("");
+            label3.setText("");
+            topLabel.setText("");
         }
     }
 

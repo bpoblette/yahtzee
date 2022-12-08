@@ -42,6 +42,7 @@ class finalYahtzee implements ActionListener
     int[] hand = new int[dice];  
     int curenetPlayer = 1;
     int turns = 1;
+    boolean gameOver = false;
 
     scorecard scoreClass = new scorecard();
     dice diceClass = new dice();
@@ -903,6 +904,11 @@ class finalYahtzee implements ActionListener
             nextPlayer.setVisible(true);
 
             onlyOne = false;
+            
+            if (scorecard.checkGameOver() == true)
+            {
+                gameOver = true;
+            }
         }
 
 
@@ -981,7 +987,7 @@ class finalYahtzee implements ActionListener
 
 
         // game ending frame 
-        if (e.getSource() == endGame)
+        if (e.getSource() == endGame || gameOver == true)
         {
             // adding labels to top label
             topPanel.add(label5);
@@ -1019,6 +1025,7 @@ class finalYahtzee implements ActionListener
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
             endGame.setVisible(false);
+
             //TO DO: change text in labels
             topLabel.setText("Player 1");
             //topLabel.setFont("Times New Roman", Font.PLAIN, 10);
@@ -1054,6 +1061,7 @@ class finalYahtzee implements ActionListener
             label7.setVisible(true);
             label8.setBounds(250, 525, 100, 50);
             label8.setVisible(true);
+
 
         }
     }

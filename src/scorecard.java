@@ -99,10 +99,6 @@ public class scorecard
         scorecard.add(a6);
         scorecard.add(a7);
         scorecard.add(a8);
-
-
-
-
     }
 
 

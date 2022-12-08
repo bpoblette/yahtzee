@@ -9,7 +9,6 @@
 
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -269,7 +268,6 @@ class finalYahtzee implements ActionListener
         label8.setText("");
         label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         
-
 
 
 
@@ -1009,6 +1007,8 @@ class finalYahtzee implements ActionListener
 
             topPanel.setBounds(0,0,600,600);
             topPanel.setBackground(Color.pink);
+            
+            
             nextPlayer.setVisible(false);
             nextPlayerUp.setVisible(false);
             scoreShow.setVisible(false);
@@ -1019,7 +1019,6 @@ class finalYahtzee implements ActionListener
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
             endGame.setVisible(false);
-
             //TO DO: change text in labels
             topLabel.setText("Player 1");
             //topLabel.setFont("Times New Roman", Font.PLAIN, 10);
@@ -1055,6 +1054,7 @@ class finalYahtzee implements ActionListener
             label7.setVisible(true);
             label8.setBounds(250, 525, 100, 50);
             label8.setVisible(true);
+
         }
     }
 

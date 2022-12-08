@@ -1,3 +1,10 @@
+/*
+* CPSC 224, Fall 2022
+* Programming Assignment Final Prj
+* 
+* @author Louis Cerda
+* @version v1.0 11/21/22
+*/
 import java.util.ArrayList;
 
 public class scorecard 
@@ -21,6 +28,18 @@ public class scorecard
     }
 
 
+
+    public static boolean checkGameOver ()
+    {
+        for (ArrayList i : scorecard)
+        {
+            if (i.isEmpty() == false)
+                return false;
+        }
+        return true;
+    }
+
+
     public void setPlayer(int player) {
         this.player = player;
     }
@@ -41,10 +60,6 @@ public class scorecard
 
     public static int updateScores (int curPlayer, int addedScore)
     {
-        // int finalScore = Integer.parseInt(scores.get(curPlayer));
-        // String finalScr = (finalScore + addedScore);
-        // scores.set(addedScore, finalScr)
-
         // calcs the final score of prev score and new score being added
         int finalScore = scores.get(curPlayer) + addedScore;
         // sets the score
@@ -56,8 +71,6 @@ public class scorecard
     // sets up the player card for the scoreboard
     public static void setupPlayerCard()
     {
-        // ArrayList<ArrayList<String> > scoreList = new ArrayList<ArrayList<String> >(playersTotal);
-
         ArrayList<String> a1 = new ArrayList<String>();
         ArrayList<String> a2 = new ArrayList<String>();
         ArrayList<String> a3 = new ArrayList<String>();
@@ -123,127 +136,4 @@ public class scorecard
         list.add(name);
         return list;
     }
-
-
-    // public static void remove
-
-
-
-
-
-    // checks to see if all arrays are empty
-    public static boolean checkGameOver()
-    {
-        boolean isEmpty = false;
-        int counter = 0;
-        for(ArrayList<String> playerScorecards : scorecard)
-        {
-            if(playerScorecards.isEmpty() == true)
-            {
-                counter++;
-            }
-        }
-        if(counter == scorecard.size())
-        {
-            isEmpty = true;
-        }
-        return isEmpty;
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-    // max of a kind function 
-    public int maxOfAKindFound(int hand[])
-    {
-        int maxCount = 0;
-        int currentCount;
-
-        for (int dieVal = 1; dieVal <= 5+1; dieVal++)
-        {
-            currentCount = 0;
-            for(int diePos = 0; diePos < 5; diePos++)
-            {
-                if (hand[diePos] == dieVal)
-                    currentCount++;
-            }
-            if (currentCount > maxCount)
-                maxCount = currentCount;
-        }
-        return maxCount;
-    }
-
-
-    // max straight function
-    public int maxStraightFound(int hand[])
-    {
-        int maxLen = 1;
-        int curLen = 1;
-        
-        for (int counter = 0; counter < 5-1; counter++)
-        {
-            if (hand[counter] + 1 == hand[counter + 1])
-                curLen++;
-            else if (hand[counter] + 1 < hand[counter + 1])
-                curLen = 1;
-            if (curLen > maxLen)
-                maxLen = curLen;
-        }
-        return maxLen;
-    }
-
-
-    // full house functuon
-    public boolean fullHouseFound(int hand[])
-    {
-        boolean foundFH = false;
-        boolean found3K = false;
-        boolean found2K = false;
-        int currentCount;
-
-
-        for (int dieVal = 1; dieVal <= 5+1; dieVal++)
-        {
-            currentCount = 0;
-            for (int diePos = 0; diePos < 5; diePos++)
-            {
-                if (hand[diePos] == dieVal)
-                    currentCount++;
-            }
-            if (currentCount == 2)
-                found2K = true;
-            if (currentCount == 3)
-                found3K = true;
-        }
-        if (found2K == true && found3K == true)
-            return true;
-        return foundFH;
-    }
-
 }
-
-
-
-
-
-/*
- * making a list of list
- * 
- * something like an array of arrays in python
- * 
- * the 0 idx would store the total and the arry would then be of the 
- * items still in play for that player 
- * 
- * you could access it through indexing and co;ntain method and remove method built in
- * 
- * or you could also use a temp array for the current player when playing
- * 
- */

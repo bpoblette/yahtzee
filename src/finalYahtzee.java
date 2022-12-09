@@ -457,10 +457,14 @@ class finalYahtzee implements ActionListener
 
 
         // rerolls hgihlighted options whne clicked
-        if (e.getSource() == nextPlayer && turns < 3)
+        if (e.getSource() == nextPlayer )
         {
-            diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
-            unhighlight();
+            if (turns < 3)
+            {
+                turns ++;
+                diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
+                unhighlight();
+            }
         }
 
 
@@ -912,12 +916,15 @@ class finalYahtzee implements ActionListener
 
 
         // function that rolls dice and updates the text on the button
-        if (e.getSource() == rollDice && turns < 3)
+        if (e.getSource() == rollDice)
         {  
-            unhighlight();
-            rerollDiceFunction();
-            turns ++;
-            label4.setText("Turn: " + turns);
+            if (turns < 3)
+            {
+                unhighlight();
+                rerollDiceFunction();
+                turns ++;
+                label4.setText("Turn: " + turns);
+            }
         }
         
 
@@ -1116,21 +1123,21 @@ class finalYahtzee implements ActionListener
     // simple function to unhiglihgt selected dice
     public void unhighlight()
     {
-        if (rerolledDice.isEmpty() == false)
+        if (rerolledDice.isEmpty() == false && turns <= 3)
         {
-           // turns ++;
             label4.setText("Turn: " + turns);
-            // turns ++;
         }
         if (rerolledDice.contains("1"))
         {
             // dice1Button.setOpaque(false);
             dice1Button.setBackground(null);
+
             rerolledDice.remove("1");
         }
 
         if (rerolledDice.contains("2"))
         {
+
             // dice2Button.setOpaque(false);
             dice2Button.setBackground(null);
             rerolledDice.remove("2");
@@ -1138,6 +1145,7 @@ class finalYahtzee implements ActionListener
 
         if (rerolledDice.contains("3"))
         {
+
             dice3Button.setOpaque(false);
             dice3Button.setBackground(null);
 
@@ -1146,6 +1154,7 @@ class finalYahtzee implements ActionListener
 
         if (rerolledDice.contains("4"))
         {
+
             dice4Button.setBackground(null);
             dice4Button.setOpaque(false);
             rerolledDice.remove("4");

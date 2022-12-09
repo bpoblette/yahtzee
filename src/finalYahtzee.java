@@ -150,7 +150,6 @@ class finalYahtzee implements ActionListener
         menuItem5.addActionListener(this);
    
 
-
         topPanel.add(menuItem3K);
         topPanel.add(menuItem4K);
         topPanel.add(menuItemFH);
@@ -163,8 +162,6 @@ class finalYahtzee implements ActionListener
         topPanel.add(menuItem3);
         topPanel.add(menuItem4);
         topPanel.add(menuItem5);
-
-
 
 
         menuItem3K.setVisible(false);

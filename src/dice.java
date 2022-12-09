@@ -77,9 +77,9 @@ public class dice
         
         for (int counter = 0; counter < dice-1; counter++)
         {
-            if (hand[counter] + 1 == hand[counter + 1])
+            if (hand[counter] - 1 == hand[counter + 1])
                 curLen++;
-            else if (hand[counter] + 1 < hand[counter + 1])
+            else if (hand[counter] - 1 < hand[counter + 1])
                 curLen = 1;
             if (curLen > maxLen)
                 maxLen = curLen;

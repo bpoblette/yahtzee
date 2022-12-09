@@ -390,7 +390,7 @@ class finalYahtzee implements ActionListener
 
             // setting bounds for labels that say dice and sides
             label3.setText("Players: ");
-            label3.setBounds(250,100,150,100);
+            label3.setBounds(250,100,120,100);
             label4.setBounds(12,10,75, 25);
 
 
@@ -431,7 +431,7 @@ class finalYahtzee implements ActionListener
 
             // setting up score display label
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
-            label3.setBounds(10,0,250,100);
+            label3.setBounds(10,0,210,100);
 
 
 
@@ -509,7 +509,11 @@ class finalYahtzee implements ActionListener
 
             // showing scores 
             diceClass.sortArray(hand, 5);
-            
+            // for(int i = 0; i < 5; i++)
+            // {
+            //     System.out.println(hand[i]);
+            // }
+            // System.out.println(diceClass.maxOfAKindFound(hand));
             if (currentScorecard.contains("1"))
             {
                 menuItem1.setVisible(true);
@@ -578,16 +582,16 @@ class finalYahtzee implements ActionListener
             if (currentScorecard.contains("3K"))
             {   
                 menuItem3K.setVisible(true);
-                if (diceClass.maxOfAKindFound(hand) >= 3)
+                if (diceClass.maxOfAKindFound(hand) == 3)
                     score = diceClass.totalAllDice(hand);
                 menuItem3K.setText("3K Score: " + score);
             }
-
+            score = 0;
             if (currentScorecard.contains("4K"))
             {
                 menuItem4K.setVisible(true);
 
-                if (diceClass.maxOfAKindFound(hand) >= 4)
+                if (diceClass.maxOfAKindFound(hand) == 4)
                     score = diceClass.totalAllDice(hand);
                 menuItem4K.setText("4K Score: " + score);
             }
@@ -648,7 +652,7 @@ class finalYahtzee implements ActionListener
             int temp = 0;
             if (diceClass.maxOfAKindFound(hand) >= 3)
                 temp = diceClass.totalAllDice(hand);
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItem3K.setVisible(false);
                 currentScorecard.remove("3K");
@@ -664,7 +668,7 @@ class finalYahtzee implements ActionListener
             int temp = 0;
             if (diceClass.maxOfAKindFound(hand) >= 4)
                 temp = diceClass.totalAllDice(hand);
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItem4K.setVisible(false);
                 currentScorecard.remove("4K");
@@ -683,7 +687,7 @@ class finalYahtzee implements ActionListener
             if (diceClass.fullHouseFound(hand) == true)
                 temp = 25;
 
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItemFH.setVisible(false);
                 currentScorecard.remove("FH");
@@ -699,7 +703,7 @@ class finalYahtzee implements ActionListener
             if (diceClass.maxStraightFound(hand) >= 4)
                 temp = 30;
 
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItemSS.setVisible(false);
                 currentScorecard.remove("SS");
@@ -714,7 +718,7 @@ class finalYahtzee implements ActionListener
             int temp = 0;
             if (diceClass.maxStraightFound(hand) >= 5)
                 temp = 40;
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItemLS.setVisible(false);
                 currentScorecard.remove("LS");
@@ -730,7 +734,7 @@ class finalYahtzee implements ActionListener
 
             if (diceClass.maxOfAKindFound(hand) >= 5)
                 temp = 50;
-            if (onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItemYL.setVisible(false);
                 currentScorecard.remove("YL");
@@ -765,7 +769,7 @@ class finalYahtzee implements ActionListener
             }
             // score to be added
             int temp = 1*currentCount;
-            if(onlyOne == false)
+            if(temp > 0 && onlyOne == false)
             {
                 menuItem1.setVisible(false);
                 currentScorecard.remove("1");
@@ -784,7 +788,7 @@ class finalYahtzee implements ActionListener
                     currentCount++;
             }
             int temp = 2*currentCount;
-            if(onlyOne == false)
+            if(temp > 0 && onlyOne == false)
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
@@ -803,7 +807,7 @@ class finalYahtzee implements ActionListener
                     currentCount++;
             }
             int temp = 3*currentCount;
-            if(onlyOne == false)
+            if(temp > 0 && onlyOne == false)
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
@@ -824,7 +828,7 @@ class finalYahtzee implements ActionListener
             }
             int temp = 4*currentCount;
 
-            if(onlyOne == false)
+            if(temp > 0 && onlyOne == false)
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
@@ -843,7 +847,7 @@ class finalYahtzee implements ActionListener
                     currentCount++;
             }
             int temp = 5*currentCount;
-            if(onlyOne == false) 
+            if(temp > 0 && onlyOne == false) 
             {
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
@@ -1119,7 +1123,7 @@ class finalYahtzee implements ActionListener
     {
         if (rerolledDice.isEmpty() == false)
         {
-           // turns ++;
+            turns ++;
             label4.setText("Turn: " + turns);
             // turns ++;
         }

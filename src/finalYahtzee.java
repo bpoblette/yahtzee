@@ -79,75 +79,75 @@ class finalYahtzee implements ActionListener
         // menu item buttons
         menuItem3K = new JButton(); // 1
         menuItem3K.setText("");
-        menuItem3K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem3K.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem3K.setBounds(100,125,200,50);
         menuItem3K.addActionListener(this);
 
 
         menuItem4K = new JButton();
         menuItem4K.setText("");
-        menuItem4K.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4K.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem4K.setBounds(100,175,200,50);
         menuItem4K.addActionListener(this);
 
         
         menuItemFH = new JButton();
         menuItemFH.setText("");
-        menuItemFH.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemFH.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItemFH.setBounds(100,225,200,50);
         menuItemFH.addActionListener(this);
         
         menuItemLS = new JButton();
         menuItemLS.setText("");
-        menuItemLS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemLS.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItemLS.setBounds(100,275,200,50);
         menuItemLS.addActionListener(this);
         
         menuItemSS = new JButton();
         menuItemSS.setText("");
-        menuItemSS.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemSS.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItemSS.setBounds(100,325,200,50);
         menuItemSS.addActionListener(this);
         
         menuItemYL = new JButton();
         menuItemYL.setText("");
-        menuItemYL.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemYL.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItemYL.setBounds(100,375,200,50);
         menuItemYL.addActionListener(this);
         
         menuItemC = new JButton();
         menuItemC.setText("");
-        menuItemC.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItemC.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItemC.setBounds(100,425,200,50);
         menuItemC.addActionListener(this);
         
         menuItem1 = new JButton();
         menuItem1.setText("");
-        menuItem1.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem1.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem1.setBounds(300,125,200,50);
         menuItem1.addActionListener(this);
         
         menuItem2 = new JButton();
         menuItem2.setText("");
-        menuItem2.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem2.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem2.setBounds(300,175,200,50);
         menuItem2.addActionListener(this);
         
         menuItem3 = new JButton();
         menuItem3.setText("");
-        menuItem3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem3.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem3.setBounds(300,225,200,50);
         menuItem3.addActionListener(this);
         
         menuItem4 = new JButton();
         menuItem4.setText("");
-        menuItem4.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem4.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem4.setBounds(300,275,200,50);
         menuItem4.addActionListener(this);
         
         menuItem5 = new JButton();
         menuItem5.setText("");
-        menuItem5.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+        menuItem5.setFont(new Font("Helvetica", Font.PLAIN, 25));
         menuItem5.setBounds(300,325,200,50);
         menuItem5.addActionListener(this);
    
@@ -183,7 +183,7 @@ class finalYahtzee implements ActionListener
 
         dice1Button = new JButton(); 
         dice1Button.setText("");
-        dice1Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        dice1Button.setFont(new Font("Helvetica", Font.BOLD, 25));
         dice1Button.setBounds(80,150,75,75);
         dice1Button.addActionListener(this);
         topPanel.add(dice1Button);
@@ -191,7 +191,7 @@ class finalYahtzee implements ActionListener
 
         dice2Button = new JButton(); 
         dice2Button.setText("");
-        dice2Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        dice2Button.setFont(new Font("Helvetica", Font.BOLD, 25));
         dice2Button.setBounds(170,150,75,75);
         dice2Button.addActionListener(this);
         topPanel.add(dice2Button);
@@ -199,7 +199,7 @@ class finalYahtzee implements ActionListener
 
         dice3Button = new JButton(); 
         dice3Button.setText("");
-        dice3Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        dice3Button.setFont(new Font("Helvetica", Font.BOLD, 25));
         dice3Button.setBounds(260,150,75,75);
         dice3Button.addActionListener(this);
         topPanel.add(dice3Button);
@@ -207,7 +207,7 @@ class finalYahtzee implements ActionListener
 
         dice4Button = new JButton(); 
         dice4Button.setText("");
-        dice4Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        dice4Button.setFont(new Font("Helvetica", Font.BOLD, 25));
         dice4Button.setBounds(350,150,75,75);
         dice4Button.addActionListener(this);
         topPanel.add(dice4Button);
@@ -215,7 +215,7 @@ class finalYahtzee implements ActionListener
 
         dice5Button = new JButton(); 
         dice5Button.setText("");
-        dice5Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
+        dice5Button.setFont(new Font("Helvetica", Font.BOLD, 25));
         dice5Button.setBounds(440,150,75,75);
         dice5Button.addActionListener(this);
         topPanel.add(dice5Button);
@@ -226,50 +226,50 @@ class finalYahtzee implements ActionListener
         // label welcome 
         topLabel = new JLabel();
         topLabel.setText("Welcome to Yahtzee!");
-        topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
-        topLabel.setBounds(50,50,457,100);
+        topLabel.setFont(new Font("Helvetica", Font.BOLD, 40));
+        topLabel.setBounds(100,50,450,100);
 
 
 
         // middle label blank intially 
         midLabel = new JLabel();
         midLabel.setText("");
-        midLabel.setFont(new Font("Times New Roman", Font.PLAIN, 32));
+        midLabel.setFont(new Font("Helvetica", Font.PLAIN, 32));
 
         // label 3 blank intially 
         label3 = new JLabel();
         label3.setText("");
-        label3.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        label3.setFont(new Font("Helvetica", Font.PLAIN, 30));
 
         // label 4 blank intially 
         label4 = new JLabel();
         label4.setText("");
-        label4.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label4.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
         // label 5 blank intially 
         label5 = new JLabel();
         label5.setText("");
-        label5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label5.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
         // label 6 blank intially 
         label6 = new JLabel();
         label6.setText("");
-        label6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label6.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
         // label 7 blank intially 
         label7 = new JLabel();
         label7.setText("");
-        label7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label7.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
         // label 8 blank intially 
         label8 = new JLabel();
         label8.setText("");
-        label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label8.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
         // label 8 blank intially 
         label9 = new JLabel();
         label9.setText("");
-        label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        label9.setFont(new Font("Helvetica", Font.PLAIN, 20));
         
 
 
@@ -281,7 +281,7 @@ class finalYahtzee implements ActionListener
         startBut.setText("Start"); 
         startBut.setPreferredSize(new Dimension(200,50));
         startBut.addActionListener(this);
-        startBut.setBackground(Color.lightGray);
+        startBut.setBackground(Color.white);
         startBut.setOpaque(true);
 
 
@@ -290,7 +290,7 @@ class finalYahtzee implements ActionListener
         next.setText("Next");
         next.setPreferredSize(new Dimension(200,50));
         next.addActionListener(this);
-        next.setBackground(Color.lightGray);
+        next.setBackground(Color.white);
         next.setOpaque(true);
 
         // creating next player button
@@ -298,7 +298,7 @@ class finalYahtzee implements ActionListener
         nextPlayer.setText("Reroll Highlighted Dice");
         nextPlayer.setPreferredSize(new Dimension(200,50));
         nextPlayer.addActionListener(this);
-        nextPlayer.setBackground(Color.lightGray);
+        nextPlayer.setBackground(Color.white);
         nextPlayer.setOpaque(true);
 
         // creating next player button
@@ -306,7 +306,7 @@ class finalYahtzee implements ActionListener
         rollDice.setText("Roll All Dice");
         rollDice.setPreferredSize(new Dimension(200,50));
         rollDice.addActionListener(this);
-        rollDice.setBackground(Color.lightGray);
+        rollDice.setBackground(Color.white);
         rollDice.setOpaque(true);
 
         // creating next player button
@@ -314,7 +314,7 @@ class finalYahtzee implements ActionListener
         scoreShow.setText("Show Scorecard");
         scoreShow.setPreferredSize(new Dimension(200,50));
         scoreShow.addActionListener(this);
-        scoreShow.setBackground(Color.lightGray);
+        scoreShow.setBackground(Color.white);
         scoreShow.setOpaque(true);
 
         // creating next player button
@@ -322,7 +322,7 @@ class finalYahtzee implements ActionListener
         scoreHide.setText("Hide Scorecard");
         scoreHide.setPreferredSize(new Dimension(200,50));
         scoreHide.addActionListener(this);
-        scoreHide.setBackground(Color.lightGray);
+        scoreHide.setBackground(Color.white);
         scoreHide.setOpaque(true);
 
         // creating next player button
@@ -330,7 +330,7 @@ class finalYahtzee implements ActionListener
         nextPlayerUp.setText("Next Player");
         nextPlayerUp.setPreferredSize(new Dimension(200,50));
         nextPlayerUp.addActionListener(this);
-        nextPlayerUp.setBackground(Color.lightGray);
+        nextPlayerUp.setBackground(Color.white);
         nextPlayerUp.setOpaque(true);
 
         // creating end game button
@@ -347,6 +347,7 @@ class finalYahtzee implements ActionListener
         unselect.setPreferredSize(new Dimension(200,50));
         unselect.addActionListener(this);
         unselect.setOpaque(true);
+        unselect.setBackground(Color.white);
 
 
 
@@ -382,8 +383,9 @@ class finalYahtzee implements ActionListener
         // changing the settings of the game to fit their needs
         if (e.getSource() == startBut)
         {
-            topLabel.setText("How many players would you like to play with?");
-            topLabel.setFont(new Font("Times New Roman", Font.BOLD, 22));
+            topLabel.setText("Select Number of Players");
+            topLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
+            topLabel.setBounds(175, 50, 250, 100);
 
 
             // setting bounds for labels that say dice and sides
@@ -429,7 +431,7 @@ class finalYahtzee implements ActionListener
 
             // setting up score display label
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
-            label3.setBounds(10,0,200,100);
+            label3.setBounds(10,0,210,100);
 
 
 
@@ -447,7 +449,7 @@ class finalYahtzee implements ActionListener
             // setting up turns label, current player label, and configing game accoridng to how many players were chosen
             label4.setText("Turns: " + turns);
             topLabel.setText("Player: " + curenetPlayer);
-            topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
+            topLabel.setFont(new Font("Helvetica", Font.BOLD, 50));
             topLabel.setBounds(10,50,500,100);
 
             scorecard.setPlayer(player);
@@ -1072,15 +1074,15 @@ class finalYahtzee implements ActionListener
             
             
 
-            label3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
-            label4.setFont(new Font("Times New Roman", Font.PLAIN, 22));
-            label5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-            label6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-            label7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-            label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-            label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label3.setFont(new Font("Helvetica", Font.PLAIN, 25));
+            label4.setFont(new Font("Helvetica", Font.PLAIN, 22));
+            label5.setFont(new Font("Helvetica", Font.PLAIN, 20));
+            label6.setFont(new Font("Helvetica", Font.PLAIN, 20));
+            label7.setFont(new Font("Helvetica", Font.PLAIN, 20));
+            label8.setFont(new Font("Helvetica", Font.PLAIN, 20));
+            label9.setFont(new Font("Helvetica", Font.PLAIN, 20));
             
-            label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label9.setFont(new Font("Helvetica", Font.PLAIN, 20));
 
             topLabel.setBounds(150, 0, 350, 50);
             topLabel.setVisible(true);
@@ -1188,4 +1190,4 @@ class finalYahtzee implements ActionListener
         dice5Button.setText(dice5Roll);
         hand[4] = Integer.parseInt(dice5Roll);
     }
-}
+} 

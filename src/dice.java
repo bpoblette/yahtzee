@@ -79,7 +79,7 @@ public class dice
         {
             if (hand[counter] - 1 == hand[counter + 1])
                 curLen++;
-            else if (hand[counter] - 1 < hand[counter + 1])
+            else if (hand[counter] - 1 > hand[counter + 1])
                 curLen = 1;
             if (curLen > maxLen)
                 maxLen = curLen;

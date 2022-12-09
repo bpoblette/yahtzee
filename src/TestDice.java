@@ -104,6 +104,27 @@ public class TestDice
         assertTrue(temp == 4);
     }
 
+    @Test
+    public void testMaxStraightFoundWithDescendingList()
+    {
+        // new dice object
+        dice testDice = new dice();
+        int hand[] = new int[5];
+
+        hand[0] = 3;
+        hand[1] = 2;
+        hand[2] = 3;
+        hand[3] = 4;
+        hand[4] = 5;
+        testDice.sortArray(hand, 5);
+        // sets hand equal to a small straight
+        int temp = testDice.maxStraightFound(hand);
+
+        //asserts that the max straight possible is 4
+        assertTrue(temp == 4);
+    }
+
+
     // @Test
     // public void testRerollSelected()
     // {

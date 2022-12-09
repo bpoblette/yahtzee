@@ -66,10 +66,10 @@ class finalYahtzee implements ActionListener
         // creating a panel
         topPanel = new JPanel();
         midPanel = new JPanel();
-        topPanel.setBackground(new Color(75, 75, 75)); // setting color of background panel
+        topPanel.setBackground(Color.white); // setting color of background panel
         topPanel.setBounds(0, 0, 600, 270);
 
-        midPanel.setBackground(new Color(75, 75, 75)); 
+        midPanel.setBackground(Color.white); 
         midPanel.setBounds(0, 270 , 600, 330);
 
 

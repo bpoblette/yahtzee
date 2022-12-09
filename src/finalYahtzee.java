@@ -17,9 +17,9 @@ class finalYahtzee implements ActionListener
 {
     JButton startBut, next, nextPlayer, rollDice, scoreShow, scoreHide, menuItem3K, 
         menuItem4K, menuItemFH, menuItemSS,menuItemLS, menuItemYL, menuItemC,menuItem1, menuItem2, menuItem3, 
-        menuItem4, menuItem5, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp, endGame;
+        menuItem4, menuItem5, dice1Button, dice2Button,dice3Button,dice4Button,dice5Button, nextPlayerUp, endGame, unselect;
 
-    JLabel topLabel, midLabel, label3, label4, label5, label6, label7, label8; 
+    JLabel topLabel, midLabel, label3, label4, label5, label6, label7, label8, label9; 
 
     JPanel topPanel, midPanel, lowPanel, endPanel;
 
@@ -41,7 +41,7 @@ class finalYahtzee implements ActionListener
     int player = 1;
     int[] hand = new int[dice];  
     int curenetPlayer = 1;
-    int turns = 1;
+    int turns = 0;
     boolean gameOver = false;
 
     scorecard scoreClass = new scorecard();
@@ -184,7 +184,7 @@ class finalYahtzee implements ActionListener
         dice1Button = new JButton(); 
         dice1Button.setText("");
         dice1Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        dice1Button.setBounds(10,150,75,75);
+        dice1Button.setBounds(80,150,75,75);
         dice1Button.addActionListener(this);
         topPanel.add(dice1Button);
         dice1Button.setVisible(false);
@@ -192,7 +192,7 @@ class finalYahtzee implements ActionListener
         dice2Button = new JButton(); 
         dice2Button.setText("");
         dice2Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        dice2Button.setBounds(95,150,75,75);
+        dice2Button.setBounds(170,150,75,75);
         dice2Button.addActionListener(this);
         topPanel.add(dice2Button);
         dice2Button.setVisible(false);
@@ -200,7 +200,7 @@ class finalYahtzee implements ActionListener
         dice3Button = new JButton(); 
         dice3Button.setText("");
         dice3Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        dice3Button.setBounds(180,150,75,75);
+        dice3Button.setBounds(260,150,75,75);
         dice3Button.addActionListener(this);
         topPanel.add(dice3Button);
         dice3Button.setVisible(false);
@@ -208,7 +208,7 @@ class finalYahtzee implements ActionListener
         dice4Button = new JButton(); 
         dice4Button.setText("");
         dice4Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        dice4Button.setBounds(265,150,75,75);
+        dice4Button.setBounds(350,150,75,75);
         dice4Button.addActionListener(this);
         topPanel.add(dice4Button);
         dice4Button.setVisible(false);
@@ -216,7 +216,7 @@ class finalYahtzee implements ActionListener
         dice5Button = new JButton(); 
         dice5Button.setText("");
         dice5Button.setFont(new Font("Times New Roman", Font.BOLD, 25));
-        dice5Button.setBounds(350,150,75,75);
+        dice5Button.setBounds(440,150,75,75);
         dice5Button.addActionListener(this);
         topPanel.add(dice5Button);
         dice5Button.setVisible(false);
@@ -234,7 +234,7 @@ class finalYahtzee implements ActionListener
         // middle label blank intially 
         midLabel = new JLabel();
         midLabel.setText("");
-        midLabel.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+        midLabel.setFont(new Font("Times New Roman", Font.PLAIN, 32));
 
         // label 3 blank intially 
         label3 = new JLabel();
@@ -265,6 +265,11 @@ class finalYahtzee implements ActionListener
         label8 = new JLabel();
         label8.setText("");
         label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+        // label 8 blank intially 
+        label9 = new JLabel();
+        label9.setText("");
+        label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         
 
 
@@ -336,6 +341,13 @@ class finalYahtzee implements ActionListener
         endGame.setBackground(Color.red);
         endGame.setOpaque(true);
 
+        // creating end game button
+        unselect = new JButton();//creating instance of JButton  
+        unselect.setText("Unselect");
+        unselect.setPreferredSize(new Dimension(200,50));
+        unselect.addActionListener(this);
+        unselect.setOpaque(true);
+
 
 
 
@@ -376,14 +388,14 @@ class finalYahtzee implements ActionListener
 
             // setting bounds for labels that say dice and sides
             label3.setText("Players: ");
-            label3.setBounds(150,100,120,100);
+            label3.setBounds(250,100,120,100);
             label4.setBounds(12,10,75, 25);
 
 
 
 
             // setting bounds for drop down menus
-            drpDwnDice.setBounds(150,150,100,100);
+            drpDwnDice.setBounds(250,150,100,100);
             drpDwnDice.setVisible(true);
             topPanel.add(drpDwnDice);
 
@@ -417,7 +429,7 @@ class finalYahtzee implements ActionListener
 
             // setting up score display label
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
-            label3.setBounds(10,0,250,100);
+            label3.setBounds(10,0,200,100);
 
 
 
@@ -429,6 +441,7 @@ class finalYahtzee implements ActionListener
             midPanel.add(nextPlayer);
             midPanel.add(nextPlayerUp);
             midPanel.add(rollDice);
+            midPanel.add(unselect);
             midPanel.add(scoreShow);
 
             // setting up turns label, current player label, and configing game accoridng to how many players were chosen
@@ -437,13 +450,13 @@ class finalYahtzee implements ActionListener
             topLabel.setFont(new Font("Times New Roman", Font.BOLD, 50));
             topLabel.setBounds(10,50,500,100);
 
-            scoreClass.setPlayer(player);
+            scorecard.setPlayer(player);
         }
 
 
 
         // rerolls hgihlighted options whne clicked
-        if (e.getSource() == nextPlayer && turns < 6)
+        if (e.getSource() == nextPlayer && turns < 3)
         {
             diceClass.rerollSelected(rerolledDice, dice1Button, hand, dice2Button, dice3Button, dice4Button, dice5Button);
             unhighlight();
@@ -452,7 +465,7 @@ class finalYahtzee implements ActionListener
 
         if (e.getSource() == nextPlayerUp)
         {
-            turns = 1;
+            turns = 0;
             label4.setText("Turn: " + turns);
             curenetPlayer = (((curenetPlayer) % player) + 1);
             label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
@@ -479,6 +492,7 @@ class finalYahtzee implements ActionListener
             dice3Button.setVisible(false);
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
+            unselect.setVisible(false);
             label4.setVisible(false);
 
 
@@ -492,6 +506,8 @@ class finalYahtzee implements ActionListener
 
 
             // showing scores 
+            diceClass.sortArray(hand, 5);
+            
             if (currentScorecard.contains("1"))
             {
                 menuItem1.setVisible(true);
@@ -630,15 +646,15 @@ class finalYahtzee implements ActionListener
             int temp = 0;
             if (diceClass.maxOfAKindFound(hand) >= 3)
                 temp = diceClass.totalAllDice(hand);
-            if (temp != 0 && onlyOne == false)
+            if (temp > 0 && onlyOne == false)
             {
                 menuItem3K.setVisible(false);
                 currentScorecard.remove("3K");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
-
+                onlyOne = true;
             }
-            onlyOne = true;
+            
         }
 
         if (e.getSource() == menuItem4K)
@@ -652,9 +668,10 @@ class finalYahtzee implements ActionListener
                 currentScorecard.remove("4K");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
+                onlyOne = true;
 
             }
-            onlyOne = true;
+
 
         }
 
@@ -670,10 +687,8 @@ class finalYahtzee implements ActionListener
                 currentScorecard.remove("FH");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
-
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItemSS)
@@ -688,10 +703,8 @@ class finalYahtzee implements ActionListener
                 currentScorecard.remove("SS");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
-
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItemLS)
@@ -705,10 +718,8 @@ class finalYahtzee implements ActionListener
                 currentScorecard.remove("LS");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
-
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItemYL)
@@ -723,9 +734,8 @@ class finalYahtzee implements ActionListener
                 currentScorecard.remove("YL");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItemC)
@@ -737,9 +747,8 @@ class finalYahtzee implements ActionListener
                 int temp = diceClass.totalAllDice(hand);
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total Score: " + finalScore);
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItem1)
@@ -754,20 +763,14 @@ class finalYahtzee implements ActionListener
             }
             // score to be added
             int temp = 1*currentCount;
-
-
-
             if(temp > 0 && onlyOne == false)
             {
                 menuItem1.setVisible(false);
                 currentScorecard.remove("1");
                 int finalScore = scorecard.updateScores((curenetPlayer-1), temp);
                 label3.setText("Total score: " + finalScore);
-
-
+                onlyOne = true;
             }
-
-            onlyOne = true;
         }
 
         if (e.getSource() == menuItem2)
@@ -785,11 +788,8 @@ class finalYahtzee implements ActionListener
                 label3.setText("Total score: " + finalScore);
                 menuItem2.setVisible(false);
                 currentScorecard.remove("2");
+                onlyOne = true;
             }
-
-
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItem3)
@@ -807,10 +807,8 @@ class finalYahtzee implements ActionListener
                 label3.setText("Total score: " + finalScore);
                 menuItem3.setVisible(false);
                 currentScorecard.remove("3");
+                onlyOne = true;
             }
-
-
-            onlyOne = true;
         }
 
 
@@ -830,9 +828,8 @@ class finalYahtzee implements ActionListener
                 label3.setText("Total score: " + finalScore);
                 menuItem4.setVisible(false);
                 currentScorecard.remove("4");
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
         if (e.getSource() == menuItem5)
@@ -850,22 +847,25 @@ class finalYahtzee implements ActionListener
                 label3.setText("Total score: " + finalScore);
                 menuItem5.setVisible(false);
                 currentScorecard.remove("5");
+                onlyOne = true;
             }
-            onlyOne = true;
-
         }
 
-
+        if (e.getSource() == unselect)
+        {
+            unhighlight();
+        }
 
 
 
         if (e.getSource() == scoreHide)
         {
+            unselect.setVisible(true);
             label4.setVisible(true);
             nextPlayerUp.setVisible(true);
             if (onlyOne == true)
             {
-                turns = 1;
+                turns = 0;
                 label4.setText("Turn: " + turns);
                 curenetPlayer = (((curenetPlayer) % player) + 1);
                 label3.setText("Total Score: " + scorecard.getSpecScore(curenetPlayer - 1));
@@ -911,7 +911,7 @@ class finalYahtzee implements ActionListener
 
 
         // function that rolls dice and updates the text on the button
-        if (e.getSource() == rollDice && turns < 6)
+        if (e.getSource() == rollDice && turns < 3)
         {  
             unhighlight();
             rerollDiceFunction();
@@ -933,6 +933,7 @@ class finalYahtzee implements ActionListener
             JComboBox<String> cb = (JComboBox<String>)e.getSource();
             String playerString = (String)cb.getSelectedItem();  
             player = Integer.parseInt(playerString);
+            scorecard.setPlayer(player);
         }
 
 
@@ -986,7 +987,11 @@ class finalYahtzee implements ActionListener
         // game ending frame 
         if (e.getSource() == endGame || gameOver == true)
         {
+            scorecard.scoreRanking();
             // adding labels to top label
+            topLabel.setText("GAME OVER");
+            label3.setText("");
+            label4.setText("");
             topPanel.add(label5);
             topPanel.add(midLabel);
             topPanel.add(label6);
@@ -1009,7 +1014,7 @@ class finalYahtzee implements ActionListener
 
 
             topPanel.setBounds(0,0,600,600);
-            topPanel.setBackground(Color.pink);
+            topPanel.setBackground(Color.white);
             
             
             nextPlayer.setVisible(false);
@@ -1022,42 +1027,83 @@ class finalYahtzee implements ActionListener
             dice4Button.setVisible(false);
             dice5Button.setVisible(false);
             endGame.setVisible(false);
+            unselect.setVisible(false);
 
-            //TO DO: change text in labels
-            topLabel.setText("Player 1");
-            //topLabel.setFont("Times New Roman", Font.PLAIN, 10);
-            midLabel.setText("Player 2");
-            //midLabel.setFont("Times New Roman", Font.PLAIN, 10);
-            label3.setText("Player 3");
-            //Label3.setFont("Times New Roman", Font.PLAIN, 10);
-            label4.setText("Player 4");
-            //label4.setFont("Times New Roman", Font.PLAIN, 10);
-            label5.setText("Player 5");
-            //label5.setFont("Times New Roman", Font.PLAIN, 10);
-            label6.setText("Player 6");
-            //label6.setFont("Times New Roman", Font.PLAIN, 10);
-            label7.setText("Player 7");
-            //label7.setFont("Times New Roman", Font.PLAIN, 10);
-            label8.setText("Player 8");
-            //label8.setFont("Times New Roman", Font.PLAIN, 10);
+            String temp;
 
+            
+            for(int i = 0; i < player; i++)
+            {
+                switch(i){
+                    case 0:
+                        temp = scorecard.rankedScores.get(i);
+                        midLabel.setText(temp);
+                        break;
+                    case 1:
+                        temp = scorecard.rankedScores.get(i);
+                        label3.setText(temp);
+                        break;
+                    case 2:
+                        temp = scorecard.rankedScores.get(i);
+                        label4.setText(temp);
+                        break;
+                    case 3:
+                        temp = scorecard.rankedScores.get(i);
+                        label5.setText(temp);
+                        break;
+                    case 4:
+                        temp = scorecard.rankedScores.get(i);
+                        label6.setText(temp);
+                        break;
+                    case 5:
+                        temp = scorecard.rankedScores.get(i);
+                        label7.setText(temp);
+                        break;
+                    case 6:
+                        temp = scorecard.rankedScores.get(i);
+                        label8.setText(temp);
+                        break; 
+                    case 7:
+                        temp = scorecard.rankedScores.get(i);
+                        label9.setText(temp);
+                        break;
+                }
+            }
+            
+            
 
-            topLabel.setBounds(250, 0, 100, 50);
+            label3.setFont(new Font("Times New Roman", Font.PLAIN, 25));
+            label4.setFont(new Font("Times New Roman", Font.PLAIN, 22));
+            label5.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label6.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label7.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label8.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+            
+            label9.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+
+            topLabel.setBounds(150, 0, 350, 50);
             topLabel.setVisible(true);
-            midLabel.setBounds(250, 75, 100, 50);
+
+            midLabel.setBounds(230, 75, 200, 50);
             midLabel.setVisible(true);
-            label3.setBounds(250, 150, 100, 50);
+
+            label3.setBounds(215, 120, 200, 50);
             label3.setVisible(true);
-            label4.setBounds(250, 225, 100, 50);
+            label4.setBounds(285, 160, 200, 50);
             label4.setVisible(true);
-            label5.setBounds(250, 300, 100, 50);
+
+            label5.setBounds(250, 200, 200, 50);
             label5.setVisible(true);
-            label6.setBounds(250, 375, 100, 50);
+            label6.setBounds(250, 250, 200, 50);
             label6.setVisible(true);
-            label7.setBounds(250, 450, 100, 50);
+            label7.setBounds(250, 300, 200, 50);
             label7.setVisible(true);
-            label8.setBounds(250, 525, 100, 50);
+            label8.setBounds(250, 350, 200, 50);
             label8.setVisible(true);
+            label9.setBounds(250,400,200,50);
+            topPanel.add(label9);
+            label9.setVisible(true);
 
 
         }

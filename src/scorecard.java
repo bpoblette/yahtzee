@@ -1,19 +1,15 @@
-/*
-* CPSC 224, Fall 2022
-* Programming Assignment Final Prj
-* 
-* @author Louis Cerda
-* @version v1.0 11/21/22
-*/
 import java.util.ArrayList;
+import java.util.Collections;
+
 
 public class scorecard 
 {
     // static int player;
     static ArrayList<Integer> scores = new ArrayList<>();
     static ArrayList<ArrayList<String>> scorecard = new ArrayList<ArrayList<String>>();
+    static ArrayList<String> rankedScores = new ArrayList<>();
     
-    int player;
+    private static int player;
 
 
     scorecard()
@@ -31,7 +27,7 @@ public class scorecard
 
     public static boolean checkGameOver ()
     {
-        for (ArrayList i : scorecard)
+        for (ArrayList<String> i : scorecard)
         {
             if (i.isEmpty() == false)
                 return false;
@@ -40,8 +36,8 @@ public class scorecard
     }
 
 
-    public void setPlayer(int player) {
-        this.player = player;
+    static public void setPlayer(int ply) {
+        player = ply;
     }
 
     public static ArrayList<String> getSpecScorecard(int cur)
@@ -131,5 +127,22 @@ public class scorecard
         for (String name : upperArr)
         list.add(name);
         return list;
+    }
+
+    public static void scoreRanking()
+    {
+        int index;
+        int max;
+        String temp;
+        for(int i = 0; i < player; i++)
+        {
+            max = Collections.max(scores);
+            index = scores.indexOf(max);
+            if (max > -1){
+                temp = "Player " + (index + 1) + ": " + max;
+                scores.set(index, -1);
+                rankedScores.add(temp);
+            }
+        }
     }
 }

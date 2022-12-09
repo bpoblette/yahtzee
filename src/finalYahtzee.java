@@ -585,7 +585,7 @@ class finalYahtzee implements ActionListener
                     score = diceClass.totalAllDice(hand);
                 menuItem3K.setText("3K Score: " + score);
             }
-
+            score = 0;
             if (currentScorecard.contains("4K"))
             {
                 menuItem4K.setVisible(true);
@@ -1096,10 +1096,11 @@ class finalYahtzee implements ActionListener
             midLabel.setBounds(230, 75, 200, 50);
             midLabel.setVisible(true);
 
-            label3.setBounds(215, 120, 200, 50);
+            label3.setBounds(150, 125, 200, 50);
             label3.setVisible(true);
-            label4.setBounds(285, 160, 200, 50);
+            label4.setBounds(325, 125, 200, 50);
             label4.setVisible(true);
+
 
             label5.setBounds(250, 200, 200, 50);
             label5.setVisible(true);
